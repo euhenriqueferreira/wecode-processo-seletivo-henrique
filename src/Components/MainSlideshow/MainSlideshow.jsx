@@ -19,14 +19,14 @@ export function MainSlideshow() {
         {
             id: 1,
             imageUrl: "static/images/slideshow/banner-principal-1.png",
-            imageAlt: 'Simple and Beauty',
-            imageTitle: 'Simple and Beauty'
+            imageAlt: 'Classics',
+            imageTitle: 'Classics'
         },
         {
             id: 2,
             imageUrl: "static/images/slideshow/banner-principal-2.png",
-            imageAlt: 'Classics',
-            imageTitle: 'Classics'
+            imageAlt: 'Simple and Beauty',
+            imageTitle: 'Simple and Beauty'
         },
     ]
 
