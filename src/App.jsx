@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import { Banners } from './Components/Banners/Banners';
 import { CategoriesList } from './Components/CategoriesList/CategoriesList';
 import { GeoLocalization } from './Components/GeoLocalization/GeoLocalization';
 import { Header } from './Components/Header/Header';
@@ -47,6 +48,7 @@ export function App() {
       <Header categories={categories} />
       <MainSlideshow />
       <CategoriesList categories={categories} />
+      <Banners />
     </div>
   );
 }
