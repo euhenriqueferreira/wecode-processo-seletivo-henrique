@@ -2,6 +2,12 @@
 
 // Header
 
+header.header {
+    position: absolute;
+    top: 2.5rem;
+    z-index: 2;
+    width: 100%;
+}
 
 .headerWrapper {
     display: grid;
@@ -43,10 +49,6 @@
 .headerWrapper>.logo {
     color: global.$white;
     transition: color 0.2s;
-}
-
-.nav {
-    // flex: 1;
 }
 
 .nav>ul {
