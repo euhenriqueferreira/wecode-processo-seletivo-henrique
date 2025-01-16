@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { DropdownMenu } from './DropdownMenu';
 import './Header.scss';
 
-export function Header() {
+export function Header({ categories }) {
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [menuHoveredStyle, setMenuHoveredStyle] = useState(false);
@@ -125,6 +125,7 @@ export function Header() {
                     dropdownVisible={dropdownVisible}
                     handleMouseEnterDropdownMenu={handleMouseEnterDropdownMenu}
                     handleMouseLeaveDropdownMenu={handleMouseLeaveDropdownMenu}
+                    categories={categories}
                 />
             </div>
         </header >

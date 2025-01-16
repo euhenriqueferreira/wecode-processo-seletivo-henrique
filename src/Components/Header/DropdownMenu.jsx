@@ -1,42 +1,7 @@
 import { useState } from 'react';
 import './DropdownMenu.scss';
 
-export function DropdownMenu({ dropdownVisible, handleMouseEnterDropdownMenu, handleMouseLeaveDropdownMenu }) {
-
-    const categories = [
-        {
-            id: 1,
-            name: 'Sapatos',
-            url: '#',
-            imageUrl: 'static/images/categorias/sapatos.png',
-            imageAlt: 'Sapatos',
-            imageTitle: 'Sapatos'
-        },
-        {
-            id: 2,
-            name: 'Scarpins',
-            url: '#',
-            imageUrl: 'static/images/categorias/scarpins.png',
-            imageAlt: 'Scarpins',
-            imageTitle: 'Scarpins'
-        },
-        {
-            id: 3,
-            name: 'Sandálias',
-            url: '#',
-            imageUrl: 'static/images/categorias/sandalias.png',
-            imageAlt: 'Sandálias',
-            imageTitle: 'Sandálias'
-        },
-        {
-            id: 4,
-            name: 'Botas',
-            url: '#',
-            imageUrl: 'static/images/categorias/botas.png',
-            imageAlt: 'Botas',
-            imageTitle: 'Botas'
-        }
-    ]
+export function DropdownMenu({ categories, dropdownVisible, handleMouseEnterDropdownMenu, handleMouseLeaveDropdownMenu }) {
 
     const [categoryImage, setCategoryImage] = useState({
         url: categories[0].imageUrl,
