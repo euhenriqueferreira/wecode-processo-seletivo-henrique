@@ -1,10 +1,14 @@
-import { Header } from './Header';
+import { GeoLocalization } from './GeoLocalization/GeoLocalization';
+import { Header } from './Header/Header';
 import './HeroSection.scss';
+import { MainSlideshow } from './MainSlideshow/MainSlideshow';
 
-export function HeroSection(){
+export function HeroSection() {
     return (
-        <div>
-           <Header />
+        <div className='heroSection'>
+            <GeoLocalization />
+            <Header />
+            <MainSlideshow />
         </div>
     )
 }
