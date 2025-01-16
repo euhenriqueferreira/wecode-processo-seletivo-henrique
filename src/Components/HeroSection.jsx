@@ -1,10 +1,12 @@
-import { Header } from './Header';
+import { GeoLocalization } from './GeoLocalization/GeoLocalization';
+import { Header } from './Header/Header';
 import './HeroSection.scss';
 
-export function HeroSection(){
+export function HeroSection() {
     return (
         <div>
-           <Header />
+            <GeoLocalization />
+            <Header />
         </div>
     )
 }

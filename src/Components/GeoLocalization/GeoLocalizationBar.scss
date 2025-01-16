@@ -1,0 +1,33 @@
+@use '../../index.scss' as global;
+
+.geoLocalizationWrapper {
+    width: 100vw;
+    background: global.$red;
+    text-align: center;
+    padding: 0.625rem 1rem;
+}
+
+
+.geoLocalizationWrapper>p,
+.geoLocalizationWrapper>a {
+    display: inline-block;
+    color: global.$white;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.geoLocalizationWrapper>a {
+    transition: color 0.2s;
+}
+
+.geoLocalizationWrapper>a:hover {
+    color: global.$gray-200;
+}
+
+.geoLocalizationWrapper>p {
+    margin-right: 0.625rem;
+}
+
+.geoLocalizationWrapper>p>span {
+    text-decoration: underline;
+}
