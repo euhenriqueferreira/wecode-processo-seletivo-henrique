@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.scss';
+import { HeroSection } from './Components/HeroSection';
 
 export function App() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <HeroSection />
     </div>
   );
 }
