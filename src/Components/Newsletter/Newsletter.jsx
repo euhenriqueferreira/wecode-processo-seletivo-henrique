@@ -18,42 +18,44 @@ export function Newsletter() {
         },
     ]
 
-    const [registeredOnNewsletter, setRegisteredOnNewsletter] = useState(localStorage.getItem('registeredOnNewsletter') ? localStorage.getItem('registeredOnNewsletter') : '');
-    const [selectedCoupon, setSelectedCoupon] = useState(localStorage.getItem('selectedCoupon') ? localStorage.getItem('selectedCoupon') : '');
+    const [registeredOnNewsletter, setRegisteredOnNewsletter] = useState(
+        localStorage.getItem('registeredOnNewsletter') || ''
+    );
+
+    const [selectedCoupon, setSelectedCoupon] = useState(
+        localStorage.getItem('selectedCoupon') || ''
+    );
+
     const [couponCopied, setCouponCopied] = useState(false);
 
+    const regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
     useEffect(() => {
-        // Pega um cupom aleatório da lista
-        const selectedCoupon = localStorage.getItem('selectedCoupon') ? localStorage.getItem('selectedCoupon') : coupons[Math.floor(Math.random() * coupons.length)].couponName;
-        document.querySelector('.couponName span').innerText = selectedCoupon;
+        // Get a random coupon from the list
+        const couponStored = localStorage.getItem('selectedCoupon');
+        const selectedCoupon = couponStored || coupons[Math.floor(Math.random() * coupons.length)].couponName;
 
-        localStorage.setItem('selectedCoupon', selectedCoupon);
-
+        // Stores on the state and local storage
         setSelectedCoupon(selectedCoupon)
+        localStorage.setItem('selectedCoupon', selectedCoupon);
     }, [])
 
     function handleCouponFormSubmit(event) {
         event.preventDefault();
         const emailField = event.target.querySelector('#email')
         const insertedEmail = emailField.value
-        const regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-
         const errorSpan = emailField.nextElementSibling;
 
         // Email Required
         if (!insertedEmail) {
-            errorSpan.innerText = "O campo e-mail é obrigatório.";
-            errorSpan.style.display = 'block';
-
-            return false
+            showError(errorSpan, "O campo e-mail é obrigatório.")
+            return;
         }
 
         // Email should be an email
-        if (!(new RegExp(regexEmail).test(insertedEmail))) {
-            errorSpan.innerText = "O e-mail é inválido.";
-            errorSpan.style.display = 'block';
-
-            return false
+        if (!isValidEmail(insertedEmail)) {
+            showError(errorSpan, "O e-mail é inválido.")
+            return;
         }
 
         localStorage.setItem('registeredOnNewsletter', true);
@@ -66,8 +68,15 @@ export function Newsletter() {
             navigator.clipboard.writeText(selectedCoupon)
             setCouponCopied(true)
         }
+    }
 
-        return false;
+    function isValidEmail(email) {
+        return new RegExp(regexEmail).test(email)
+    }
+
+    function showError(errorElement, errorMessage) {
+        errorElement.innerText = errorMessage;
+        errorElement.style.display = 'block';
     }
 
     return (
@@ -88,7 +97,7 @@ export function Newsletter() {
                     <p>Utilize o cupom abaixo e garanta seu desconto!</p>
                     <div className="couponRedeem">
                         <div className="couponName">
-                            <span></span>
+                            <span>{selectedCoupon}</span>
                         </div>
                         <button className="couponCopy" onClick={handleCouponCopyClick}>
                             {!couponCopied ? (<span>Copiar</span>) : (<span>Copiado</span>)}
