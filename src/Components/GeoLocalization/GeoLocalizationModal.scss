@@ -52,7 +52,8 @@
             .inputLine {
                 width: 100%;
 
-                input, select{
+                input,
+                select {
                     width: 100%;
                     height: 2.5rem;
                     padding-left: 1rem;
@@ -76,13 +77,6 @@
                     line-height: 1.6;
                     font-weight: 400;
                     margin-bottom: 0.5rem;
-                }
-
-                .errorSpan {
-                    color: global.$red;
-                    font-size: 0.8rem;
-                    margin-top: 0.25rem;
-                    display: none;
                 }
             }
 
@@ -125,4 +119,3 @@
 .modalBackground.visible {
     display: flex;
 }
-

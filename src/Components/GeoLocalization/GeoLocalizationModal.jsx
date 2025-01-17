@@ -14,7 +14,14 @@ export function GeoLocalizationModal({ setCurrentLocalization, storedLocalizatio
         const insertedZipCode = ZipCodeField.value.trim();
         const regexZipCode = /^[0-9]{5}-?[0-9]{3}$/;
 
-        if (insertedZipCode && regexZipCode.test(insertedZipCode)) {
+        const errorSpan = ZipCodeField.nextElementSibling
+
+        if (!insertedZipCode) {
+            errorSpan.innerText = "O campo CEP é obrigatório.";
+            errorSpan.style.display = "block";
+        }
+
+        if (regexZipCode.test(insertedZipCode)) {
             const zipCodeToSend = insertedZipCode.replace("-", "");
             const currentLocal = await fetchCurrentLocalFromAPI(zipCodeToSend);
 
@@ -26,9 +33,8 @@ export function GeoLocalizationModal({ setCurrentLocalization, storedLocalizatio
 
             handleClickHideModal();
         } else {
-            const errorElement = ZipCodeField.nextElementSibling
-            errorElement.innerText = "Formato de CEP inválido! Insira no formato '00000-000' ou '00000000'";
-            errorElement.style.display = "block";
+            errorSpan.innerText = "Formato de CEP inválido! Insira no formato '00000-000' ou '00000000'.";
+            errorSpan.style.display = "block";
         }
     }
 

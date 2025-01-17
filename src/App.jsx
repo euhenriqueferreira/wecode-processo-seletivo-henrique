@@ -6,6 +6,7 @@ import { CategoriesList } from './Components/CategoriesList/CategoriesList';
 import { GeoLocalization } from './Components/GeoLocalization/GeoLocalization';
 import { Header } from './Components/Header/Header';
 import { MainSlideshow } from './Components/MainSlideshow/MainSlideshow';
+import { Newsletter } from './Components/Newsletter/Newsletter';
 import { Releases } from './Components/Releases/Releases';
 
 export function App() {
@@ -73,6 +74,7 @@ export function App() {
       <Banners />
       <Releases />
       <Blog />
+      <Newsletter />
     </div>
   );
 }

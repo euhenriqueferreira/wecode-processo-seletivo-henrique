@@ -1,0 +1,141 @@
+@use '../../index.scss' as global;
+
+.newsletterWrapper {
+    width: 100%;
+    background: global.$bege;
+    max-width: 1760px;
+
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    .newsletterForm,
+    .newsletterCoupon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        max-height: 0;
+        opacity: 0;
+    }
+
+    .newsletterForm {
+        p {
+            font-size: 1.125rem;
+            color: global.$red;
+            font-weight: 400;
+
+            span {
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+        }
+
+        form {
+            display: flex;
+
+            input,
+            button {
+                width: 300px;
+                height: 46px;
+            }
+
+            input {
+                padding-left: 1.5rem;
+                font-size: 0.75rem;
+                color: global.$gray-600;
+                border: 1px solid global.$gray-200;
+            }
+
+            button {
+                background: global.$red;
+                border: 1px solid global.$red;
+                text-align: center;
+
+                font-size: 0.875rem;
+                font-weight: 400;
+                color: global.$white;
+                text-transform: uppercase;
+                margin-left: 1rem;
+
+                cursor: pointer;
+
+                transition: filter 0.2s;
+            }
+
+            button:hover {
+                filter: brightness(1.1);
+            }
+
+            .inputLine {
+                position: relative;
+            }
+
+            .errorSpan {
+                position: absolute;
+                top: 103%;
+            }
+        }
+    }
+
+    .newsletterCoupon {
+        p {
+            font-size: 1.125rem;
+            color: global.$gray-600;
+            font-weight: 400;
+        }
+
+        div.couponRedeem {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            div.couponName,
+            button.couponCopy {
+                height: 46px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            span {
+                font-size: 0.875rem;
+                font-weight: 400;
+            }
+
+            div.couponName {
+                min-width: 11rem;
+                background: global.$white;
+                border-top-left-radius: 100px;
+                border-bottom-left-radius: 100px;
+                padding: 0 1rem 0 1.5rem;
+                border: 2px dashed global.$gray-200;
+                border-right: 0;
+
+                span {
+                    color: global.$red;
+                }
+            }
+
+            button.couponCopy {
+                border: 0;
+                width: 9rem;
+                background: global.$red;
+                border-top-right-radius: 100px;
+                border-bottom-right-radius: 100px;
+                cursor: pointer;
+
+                span {
+                    color: global.$white;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .newsletterForm.visible,
+    .newsletterCoupon.visible {
+        max-height: none;
+        opacity: 100%;
+    }
+
+}

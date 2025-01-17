@@ -8,7 +8,7 @@ $gray-600: #1D1D1D;
 
 $red: #B11B26;
 
-$bege: #FFDCE4;
+$bege: #FFE9DC;
 
 * {
   margin: 0;
@@ -37,4 +37,11 @@ button {
 
 li {
   list-style-type: none;
+}
+
+.errorSpan {
+  color: $red;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: none;
 }
