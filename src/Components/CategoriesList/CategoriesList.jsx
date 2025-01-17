@@ -8,7 +8,7 @@ export function CategoriesList({ categories }) {
             <div className='categoriesList'>
                 {categories.map((category) => {
                     return (
-                        <a href=''>
+                        <a href='' key={category.id}>
                             <div className='imageWrapper'>
                                 <img src={category.imageUrl} alt={category.imageAlt} title={category.imageTitle} />
                             </div>

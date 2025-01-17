@@ -5,6 +5,7 @@ import { Header } from './Components/Header/Header';
 import { MainSlideshow } from './Components/MainSlideshow/MainSlideshow';
 import { CategoriesList } from './Components/CategoriesList/CategoriesList';
 import { Banners } from './Components/Banners/Banners';
+import { Releases } from './Components/Releases/Releases';
 
 export function App() {
 
@@ -50,6 +51,7 @@ export function App() {
       <MainSlideshow />
       <CategoriesList categories={categories} />
       <Banners />
+      <Releases />
     </div>
   );
 }
