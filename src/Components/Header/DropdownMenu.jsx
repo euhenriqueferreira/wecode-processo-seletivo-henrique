@@ -22,8 +22,9 @@ export function DropdownMenu({ categories, dropdownVisible, handleMouseEnterDrop
     }
 
     return (
-        <div className={`dropdownWrapper ${dropdownVisible ? 'visible' : ''}`} onMouseEnter={handleMouseEnterDropdownMenu} onMouseLeave={handleMouseLeaveDropdownMenu}>
-            <div className='dropdownContainer'>
+        <div className='dropdownWrapper' >
+            <div className='auxDiv' onMouseEnter={handleMouseEnterDropdownMenu} onMouseLeave={handleMouseLeaveDropdownMenu}></div>
+            <div className={`dropdownContainer ${dropdownVisible ? 'visible' : ''}`} onMouseEnter={handleMouseEnterDropdownMenu} onMouseLeave={handleMouseLeaveDropdownMenu}>
                 <ul>
                     {categories.map((category => {
                         return (
@@ -37,6 +38,7 @@ export function DropdownMenu({ categories, dropdownVisible, handleMouseEnterDrop
                 <img src={categoryImage.url} alt={categoryImage.alt} title={categoryImage.title} />
                 {/* <img src="static/images/categorias/menu-image-1.png" alt="" /> */}
             </div>
+            <div className='auxDiv' onMouseEnter={handleMouseEnterDropdownMenu} onMouseLeave={handleMouseLeaveDropdownMenu}></div>
         </div>
     )
 }

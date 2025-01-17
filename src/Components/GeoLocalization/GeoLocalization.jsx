@@ -2,7 +2,7 @@ import { useState } from "react";
 import { GeoLocalizationBar } from "./GeoLocalizationBar";
 import { GeoLocalizationModal } from "./GeoLocalizationModal";
 
-export function GeoLocalization() {
+export function GeoLocalization({ windowScrolled }) {
     const storedLocalization = localStorage.getItem('currentLocalization') ? JSON.parse(localStorage.getItem('currentLocalization')) : null;
 
     const [modalVisible, setModalVisible] = useState(storedLocalization ? false : true);
@@ -19,7 +19,7 @@ export function GeoLocalization() {
 
     return (
         <>
-            <GeoLocalizationBar currentLocalization={currentLocalization} handleClickShowModal={handleClickShowModal} />
+            <GeoLocalizationBar currentLocalization={currentLocalization} handleClickShowModal={handleClickShowModal} windowScrolled={windowScrolled} />
             <GeoLocalizationModal setCurrentLocalization={setCurrentLocalization} storedLocalization={storedLocalization} modalVisible={modalVisible} handleClickHideModal={handleClickHideModal} />
         </>
     )

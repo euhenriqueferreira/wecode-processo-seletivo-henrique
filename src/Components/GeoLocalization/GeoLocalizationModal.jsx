@@ -1,7 +1,7 @@
 import './GeoLocalizationModal.scss';
 
 export function GeoLocalizationModal({ setCurrentLocalization, storedLocalization, modalVisible, handleClickHideModal }) {
-    console.log('Stored fodase', storedLocalization)
+
     function handleClickModalBackground(event) {
         if (event.target.classList.contains('modalBackground')) {
             handleClickHideModal();
@@ -60,7 +60,7 @@ export function GeoLocalizationModal({ setCurrentLocalization, storedLocalizatio
                 <form onSubmit={handleFormSubmit}>
                     <div className='inputLine'>
                         <label htmlFor="zipCode">Código Postal*</label>
-                        <input type="text" name="zipCode" id="zipCode" placeholder='00000-000'   defaultValue={storedLocalization ? storedLocalization.cep : ''} required />
+                        <input type="text" name="zipCode" id="zipCode" placeholder='00000-000' defaultValue={storedLocalization ? storedLocalization.cep : ''} required />
                         <div className='errorSpan'>Formato inválido!</div>
                     </div>
                     <div className='inputLine'>

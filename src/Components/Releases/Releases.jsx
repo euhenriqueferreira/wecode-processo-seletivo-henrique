@@ -1,19 +1,19 @@
-import { useState } from "react";
-import "./Releases.scss"
+import { useEffect, useState } from "react";
+import "./Releases.scss";
 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { ProductCard } from "../ProductCard/ProductCard";
 
-export function Releases(){
+export function Releases() {
     var settings = {
         dots: true,
         infinite: false,
         speed: 500,
         slidesToShow: 5,
         slidesToScroll: 5,
-        draggable:false,
+        draggable: false,
         initialSlide: 0,
         arrows: true,
 
@@ -42,7 +42,7 @@ export function Releases(){
             //     slidesToScroll: 1
             //   }
             // }
-          ]
+        ]
     }
 
     const releasesData = [
@@ -151,20 +151,20 @@ export function Releases(){
     const [productLiked, setProductLiked] = useState(false);
     const [releases, setReleases] = useState(releasesData);
 
-    function calcProductPromotionsPerCent(){
-        const updatedReleasesPromotion =  releasesData.map((release) => {
-            if(release.productPromotion !== null){
+    useEffect(() => {
+        const updatedReleasesPromotion = releasesData.map((release) => {
+            if (release.productPromotion !== null) {
                 const promotionPerCent = ((release.productPrice - release.productPromotion) / release.productPrice * 100).toFixed()
                 return { ...release, promotionPerCent: promotionPerCent };
             }
             return { ...release, promotionPerCent: null };
         })
-       
+
         setReleases(updatedReleasesPromotion)
-    }
+    }, [])
 
     return (
-        <div className="releasesWrapper" onLoad={calcProductPromotionsPerCent}>
+        <div className="releasesWrapper">
             <h2>Lançamentos</h2>
 
             <div className="releasesSlider">

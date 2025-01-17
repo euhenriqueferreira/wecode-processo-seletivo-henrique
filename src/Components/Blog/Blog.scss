@@ -1,0 +1,80 @@
+@use '../../index.scss' as global;
+
+.blogContainer {
+    margin-top: 3.5rem;
+    padding: 3.5rem 1rem;
+    background: global.$gray-50;
+
+    .blogWrapper {
+        width: 100%;
+        max-width: 1760px;
+        margin: 0 auto;
+
+        h2 {
+            font-size: 1.75rem;
+            line-height: 1.6;
+            color: global.$gray-600;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: global.$gray-400;
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .slick-slide {
+            padding: 0px 0.5rem;
+        }
+
+        .slick-dots {
+            bottom: unset;
+            top: -3rem;
+            display: flex !important;
+            height: 6px;
+            justify-content: center;
+            width: fit-content;
+            right: 3.5rem;
+
+            li {
+                margin: 0px 2px;
+            }
+
+            li,
+            li button,
+            li button::before {
+                width: 6px;
+                height: 6px;
+                padding: 0;
+                line-height: 1;
+            }
+        }
+
+        .slick-prev {
+            right: calc(16px + 40px + 20px + 40px);
+            left: unset;
+        }
+
+        .slick-next {
+            right: 0;
+            width: 16px;
+            height: 16px;
+        }
+
+        .slick-prev,
+        .slick-next {
+            z-index: 3;
+            top: calc(-3rem + 3px);
+        }
+
+        .slick-prev::before,
+        .slick-next::before {
+            color: global.$gray-600;
+            font-size: 16px;
+        }
+    }
+}

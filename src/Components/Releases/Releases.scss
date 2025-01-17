@@ -1,13 +1,13 @@
 @use '../../index.scss' as global;
 
-.releasesWrapper{
+.releasesWrapper {
     margin: 0 auto;
     margin-top: 3rem;
     max-width: 1760px;
     padding: 0 1rem;
     width: 100%;
 
-    h2{
+    h2 {
         font-size: 1.75rem;
         line-height: 1.6;
         color: global.$gray-600;
@@ -16,10 +16,10 @@
     }
 
     .slick-slide {
-        padding: 0px 8px;
+        padding: 0px 0.5rem;
     }
 
-    .slick-dots{
+    .slick-dots {
         bottom: unset;
         top: -3rem;
         display: flex !important;
@@ -27,12 +27,14 @@
         justify-content: center;
         width: fit-content;
         right: 3.5rem;
-        
-        li{
+
+        li {
             margin: 0px 2px;
         }
-    
-        li, li button, li button::before{
+
+        li,
+        li button,
+        li button::before {
             width: 6px;
             height: 6px;
             padding: 0;
@@ -40,23 +42,25 @@
         }
     }
 
-    .slick-prev{
+    .slick-prev {
         right: calc(16px + 40px + 20px + 40px);
         left: unset;
     }
 
-    .slick-next{
+    .slick-next {
         right: 0;
         width: 16px;
         height: 16px;
     }
 
-    .slick-prev, .slick-next{
+    .slick-prev,
+    .slick-next {
         z-index: 3;
         top: calc(-3rem + 3px);
     }
 
-    .slick-prev::before, .slick-next::before{
+    .slick-prev::before,
+    .slick-next::before {
         color: global.$gray-600;
         font-size: 16px;
     }

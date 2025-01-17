@@ -2,42 +2,40 @@ import { useState } from 'react';
 import { DropdownMenu } from './DropdownMenu';
 import './Header.scss';
 
-export function Header({ categories }) {
+export function Header({ categories, windowScrolled }) {
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
-    const [menuHoveredStyle, setMenuHoveredStyle] = useState(false);
+    const [menuWhite, setMenuWhite] = useState(false);
 
     function handleMouseEnterHeader() {
-        setMenuHoveredStyle(true)
+        setMenuWhite(true)
     }
 
     function handleMouseLeaveHeader() {
-        setMenuHoveredStyle(false)
+        setMenuWhite(false)
     }
 
     function handleMouseEnterNavigationLink(event) {
-        setMenuHoveredStyle(true)
+        setMenuWhite(true)
         setDropdownVisible(true)
     }
 
     function handleMouseLeaveNavigationLink(event) {
-        setMenuHoveredStyle(false)
         setDropdownVisible(false)
     }
 
     function handleMouseEnterDropdownMenu() {
         setDropdownVisible(true)
-        setMenuHoveredStyle(true)
+        setMenuWhite(true)
     }
 
     function handleMouseLeaveDropdownMenu() {
         setDropdownVisible(false)
-        setMenuHoveredStyle(false)
+        setMenuWhite(false)
     }
 
-
     return (
-        <header className={`header ${menuHoveredStyle ? 'hovered' : ''}`}>
+        <header className={`header ${menuWhite ? 'hovered' : ''} ${windowScrolled ? 'scrolled' : ''}`}>
             <div className="headerContainer">
                 <div className="headerWrapper" onMouseEnter={handleMouseEnterHeader} onMouseLeave={handleMouseLeaveHeader}>
                     <div className="logo">

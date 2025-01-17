@@ -3,39 +3,47 @@
 // Header
 
 header.header {
-    position: absolute;
+    position: fixed;
     top: 2.5rem;
     z-index: 2;
     width: 100%;
     transition: background-color 0.2s;
 
-    .headerContainer{
+    .headerContainer {
         display: grid;
         align-items: center;
         grid-template-columns: auto 1fr auto;
         grid-template-rows: auto auto;
-        gap: 0 3rem;
-        
+
         max-width: 1760px;
         margin: 0 auto;
-        padding: 0 1rem;
 
         .headerWrapper {
             display: contents;
 
+            .logo,
+            .quickLinks {
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
             .logo {
+                padding-left: 1rem;
                 color: global.$white;
                 transition: color 0.2s;
             }
 
-            .nav{
+            .nav {
+                padding: 0 3rem;
+
                 ul {
                     display: flex;
                     align-items: center;
                     gap: 2.5rem;
 
-                    li{
-                        a{
+                    li {
+                        a {
                             text-decoration: none;
                             font-size: 0.875rem;
                             line-height: 1.6;
@@ -52,7 +60,7 @@ header.header {
                     }
 
                     li:last-child {
-                        a{
+                        a {
                             color: global.$red;
                         }
                     }
@@ -60,17 +68,19 @@ header.header {
             }
 
             .quickLinks {
-                ul{
+                padding-right: 1rem;
+
+                ul {
                     display: flex;
                     align-items: center;
                     gap: 1.5rem;
 
-                    li{
-                        a{
+                    li {
+                        a {
                             color: global.$white;
                             transition: color 0.2s;
 
-                            svg{
+                            svg {
                                 color: inherit;
                             }
                         }
@@ -81,7 +91,7 @@ header.header {
                     }
 
                     li:last-child {
-                        a{
+                        a {
                             text-decoration: none;
                             font-size: 0.75rem;
                             display: flex;
@@ -95,40 +105,41 @@ header.header {
     }
 }
 
-header.header.hovered {
+header.header.hovered,
+header.header.scrolled {
     background-color: global.$white;
 
-    .headerContainer{
-        .headerWrapper{
+    .headerContainer {
+        .headerWrapper {
 
             .logo {
                 color: global.$gray-600;
             }
-        
-            nav{
-                ul{
-                    li{
-                        a{
+
+            nav {
+                ul {
+                    li {
+                        a {
                             color: global.$gray-600;
                         }
                     }
-        
-                    li:last-child{
-                        a{
+
+                    li:last-child {
+                        a {
                             color: global.$red;
                         }
                     }
                 }
             }
-        
-            .quickLinks{
-                ul{
-                    li{
-                        a{
+
+            .quickLinks {
+                ul {
+                    li {
+                        a {
                             color: global.$gray-600;
                         }
-                        
-                        a:hover{
+
+                        a:hover {
                             color: global.$red;
                         }
                     }

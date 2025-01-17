@@ -9,14 +9,15 @@
     align-items: center;
     justify-content: center;
 
-    p, a{
+    p,
+    a {
         display: inline-block;
         color: global.$white;
         font-size: 0.875rem;
         line-height: 1.6;
     }
 
-    a{
+    a {
         transition: color 0.2s;
     }
 
@@ -31,4 +32,11 @@
             text-decoration: underline;
         }
     }
+}
+
+.geoLocalizationWrapper.scrolled {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 3;
 }
