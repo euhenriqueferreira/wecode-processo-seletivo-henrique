@@ -3,6 +3,7 @@ import './App.scss';
 import { Banners } from './Components/Banners/Banners';
 import { Blog } from './Components/Blog/Blog';
 import { CategoriesList } from './Components/CategoriesList/CategoriesList';
+import { Footer } from './Components/Footer/Footer';
 import { GeoLocalization } from './Components/GeoLocalization/GeoLocalization';
 import { Header } from './Components/Header/Header';
 import { MainSlideshow } from './Components/MainSlideshow/MainSlideshow';
@@ -75,6 +76,7 @@ export function App() {
       <Releases />
       <Blog />
       <Newsletter />
+      <Footer />
     </div>
   );
 }

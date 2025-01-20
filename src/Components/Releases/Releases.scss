@@ -65,3 +65,40 @@
         font-size: 16px;
     }
 }
+
+@media screen and (max-width: 1199px) {
+    .releasesWrapper {
+        margin-top: 2.75rem;
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.75rem;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .releasesWrapper {
+        margin-top: 2.5rem;
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .releasesWrapper {
+        margin-top: 2rem;
+
+        h2 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .slick-slide {
+            width: 220px !important;
+        }
+    }
+}

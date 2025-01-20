@@ -1,0 +1,141 @@
+@use '../../index.scss' as global;
+
+footer {
+    width: 100%;
+    background: global.$red;
+
+    .footerContainer {
+        max-width: 1920px;
+        margin: 0 auto;
+
+        .footerWrapper {
+            max-width: 1670px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            padding: 7.5rem 2rem 7.5rem 0;
+
+            .logo {
+                width: 40%;
+                height: auto;
+                color: global.$bege;
+
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .footerNavigation {
+                display: flex;
+                align-items: center;
+                gap: 5rem;
+
+
+                ul.socialIcons {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+
+                    li {
+                        margin-bottom: 0;
+
+                        a {
+                            svg {
+                                width: 1.5rem;
+                                height: 1.5rem;
+                                color: global.$bege;
+                                line-height: 0;
+                            }
+                        }
+                    }
+                }
+
+                ul:not(.socialIcons) {
+                    text-align: center;
+
+                    h3 {
+                        font-size: 1rem;
+                        color: global.$white;
+                        text-align: center;
+                        white-space: nowrap;
+                        font-weight: 600;
+                        margin-bottom: 0.3rem;
+                    }
+
+                    li {
+                        margin-bottom: 0.3rem;
+
+                        a {
+                            font-size: 0.875rem;
+                            color: global.$white;
+                            font-weight: 400;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1199px) {
+    footer {
+        .footerContainer {
+            .footerWrapper {
+                flex-direction: column;
+                padding: 5.5rem 0 5.5rem 0;
+
+                .logo {
+                    max-width: 460px;
+                    width: 100%;
+                }
+
+                .footerNavigation {
+                    padding: 0 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    footer {
+        .footerContainer {
+            .footerWrapper {
+                padding: 2rem 0 4.5rem 0;
+
+                .footerNavigation {
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: 1rem 4rem;
+                    flex-wrap: wrap;
+
+                    ul.socialIcons {
+                        justify-content: center;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    footer {
+        .footerContainer {
+            .footerWrapper {
+                padding: 1.5rem 0 4rem 0;
+
+                .footerNavigation {
+                    flex-direction: column;
+                    width: 100%;
+                    align-items: center;
+                    gap: 4rem;
+                }
+            }
+        }
+    }
+}

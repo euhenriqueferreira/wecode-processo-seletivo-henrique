@@ -11,7 +11,7 @@
         margin: 0 auto;
 
         h2 {
-            font-size: 1.75rem;
+            font-size: clamp(1rem, 2.33vw, 1.75rem);
             line-height: 1.6;
             color: global.$gray-600;
             font-weight: 400;
@@ -19,7 +19,7 @@
         }
 
         p {
-            font-size: 1.125rem;
+            font-size: clamp(0.75rem, 1.5vw, 1.125rem);
             line-height: 1.6;
             color: global.$gray-400;
             font-weight: 300;
@@ -76,5 +76,44 @@
             color: global.$gray-600;
             font-size: 16px;
         }
+    }
+}
+
+
+@media screen and (max-width:1199px) {
+    .blogContainer {
+        padding: 3rem 1rem 3.5rem;
+
+        .blogWrapper {
+            .slick-dots {
+                top: unset;
+                right: 0.5rem;
+                bottom: -2rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    .blogContainer {
+        margin-top: 3.25rem;
+        padding: 2.5rem 1rem 3.5rem;
+
+        .blogWrapper {
+            .slick-slide {
+                padding: 0px;
+            }
+
+            .slick-dots {
+                right: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:575px) {
+    .blogContainer {
+        margin-top: 3rem;
+        padding: 2rem 1rem 3.5rem;
     }
 }

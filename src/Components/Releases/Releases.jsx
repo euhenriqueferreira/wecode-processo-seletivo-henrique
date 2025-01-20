@@ -18,30 +18,36 @@ export function Releases() {
         arrows: true,
 
         responsive: [
-            // {
-            //   breakpoint: 1024,
-            //   settings: {
-            //     slidesToShow: 3,
-            //     slidesToScroll: 3,
-            //     infinite: true,
-            //     dots: true
-            //   }
-            // },
-            // {
-            //   breakpoint: 600,
-            //   settings: {
-            //     slidesToShow: 2,
-            //     slidesToScroll: 2,
-            //     initialSlide: 2
-            //   }
-            // },
-            // {
-            //   breakpoint: 480,
-            //   settings: {
-            //     slidesToShow: 1,
-            //     slidesToScroll: 1
-            //   }
-            // }
+            {
+                breakpoint: 1199,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    infinite: true,
+                    dots: false,
+                    arrows: false,
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    initialSlide: 0,
+                    dots: false,
+                    arrows: false,
+                }
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 0,
+                    dots: false,
+                    arrows: false,
+                }
+            },
         ]
     }
 
@@ -171,7 +177,7 @@ export function Releases() {
                 <Slider {...settings}>
                     {releases.map((release) => {
                         return (
-                            <ProductCard product={release} />
+                            <ProductCard key={release.id} product={release} />
                         )
                     })}
                 </Slider>
