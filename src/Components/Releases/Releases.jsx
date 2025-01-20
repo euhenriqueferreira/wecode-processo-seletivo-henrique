@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+// Styles
 import "./Releases.scss";
-
+// React
+import { useEffect, useState } from "react";
+// React Slick
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+// Data
+import { productReleases } from "../../utils";
+// Components
 import { ProductCard } from "../ProductCard/ProductCard";
 
 export function Releases() {
@@ -51,114 +56,11 @@ export function Releases() {
         ]
     }
 
-    const releasesData = [
-        {
-            id: 1,
-            imageUrl: 'static/images/products/product-1.png',
-            imageAlt: 'Scarpin Sligback',
-            imageTitle: 'Scarpin Sligback',
-            productName: 'Scarpin Sligback Bebecê Salto Médio Taça Detalhe Metalizado',
-            productPrice: '179,90',
-            productPromotion: null,
-            promotionPerCent: null
-        },
-        {
-            id: 2,
-            imageUrl: 'static/images/products/product-2.png',
-            imageAlt: 'Sandália Braco Blanc',
-            imageTitle: 'Sandália Braco Blanc',
-            productName: 'Sandália Braco Blanc Tratorada...',
-            productPrice: 459.90,
-            productPromotion: 319.89,
-            promotionPerCent: null
-        },
-        {
-            id: 3,
-            imageUrl: 'static/images/products/product-3.png',
-            imageAlt: 'Coturno Feminino Bebecê',
-            imageTitle: 'Coturno Feminino Bebecê',
-            productName: 'Coturno Feminino Bebecê Tratorado Detalhe Tachas',
-            productPrice: 349.90,
-            productPromotion: 315,
-            promotionPerCent: null
-        },
-        {
-            id: 4,
-            imageUrl: 'static/images/products/product-4.png',
-            imageAlt: 'Scarpin Bebecê Salto Alto',
-            imageTitle: 'Scarpin Bebecê Salto Alto',
-            productName: 'Scarpin Bebecê Salto Alto Taça Com Fivela',
-            productPrice: 159.90,
-            productPromotion: null,
-            promotionPerCent: null
-        },
-        {
-            id: 5,
-            imageUrl: 'static/images/products/product-5.png',
-            imageAlt: 'Slingback Branco',
-            imageTitle: 'Slingback Branco',
-            productName: 'Slingback Branco Tiras Bico Fino Couro',
-            productPrice: 379.90,
-            productPromotion: null,
-            promotionPerCent: null
-        },
-        {
-            id: 1,
-            imageUrl: 'static/images/products/product-1.png',
-            imageAlt: 'Scarpin Sligback',
-            imageTitle: 'Scarpin Sligback',
-            productName: 'Scarpin Sligback Bebecê Salto Médio Taça Detalhe Metalizado',
-            productPrice: '179,90',
-            productPromotion: null,
-            promotionPerCent: null
-        },
-        {
-            id: 2,
-            imageUrl: 'static/images/products/product-2.png',
-            imageAlt: 'Sandália Braco Blanc',
-            imageTitle: 'Sandália Braco Blanc',
-            productName: 'Sandália Braco Blanc Tratorada...',
-            productPrice: 459.90,
-            productPromotion: 319.89,
-            promotionPerCent: null
-        },
-        {
-            id: 3,
-            imageUrl: 'static/images/products/product-3.png',
-            imageAlt: 'Coturno Feminino Bebecê',
-            imageTitle: 'Coturno Feminino Bebecê',
-            productName: 'Coturno Feminino Bebecê Tratorado Detalhe Tachas',
-            productPrice: 349.90,
-            productPromotion: 315,
-            promotionPerCent: null
-        },
-        {
-            id: 4,
-            imageUrl: 'static/images/products/product-4.png',
-            imageAlt: 'Scarpin Bebecê Salto Alto',
-            imageTitle: 'Scarpin Bebecê Salto Alto',
-            productName: 'Scarpin Bebecê Salto Alto Taça Com Fivela',
-            productPrice: 159.90,
-            productPromotion: null,
-            promotionPerCent: null
-        },
-        {
-            id: 5,
-            imageUrl: 'static/images/products/product-5.png',
-            imageAlt: 'Slingback Branco',
-            imageTitle: 'Slingback Branco',
-            productName: 'Slingback Branco Tiras Bico Fino Couro',
-            productPrice: 379.90,
-            productPromotion: null,
-            promotionPerCent: null
-        },
-    ]
-
     const [productLiked, setProductLiked] = useState(false);
-    const [releases, setReleases] = useState(releasesData);
+    const [releases, setReleases] = useState(productReleases);
 
     useEffect(() => {
-        const updatedReleasesPromotion = releasesData.map((release) => {
+        const updatedReleasesPromotion = productReleases.map((release) => {
             if (release.productPromotion !== null) {
                 const promotionPerCent = ((release.productPrice - release.productPromotion) / release.productPrice * 100).toFixed()
                 return { ...release, promotionPerCent: promotionPerCent };

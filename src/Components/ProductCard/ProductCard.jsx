@@ -1,5 +1,7 @@
-import { useState } from "react";
+// Styles
 import './ProductCard.scss';
+// React
+import { useState } from "react";
 
 export function ProductCard({ product }) {
 

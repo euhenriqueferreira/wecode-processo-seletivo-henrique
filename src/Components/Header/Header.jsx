@@ -1,9 +1,14 @@
-import { useState } from 'react';
-import { DropdownMenu } from './DropdownMenu';
+// Styles
 import './Header.scss';
+// React
+import { useState } from 'react';
+// Data
+import { productCategories } from '../../utils';
+// Components
+import { DropdownMenu } from './DropdownMenu';
 import { MenuMobile } from './MenuMobile';
 
-export function Header({ categories, windowScrolled }) {
+export function Header({ windowScrolled }) {
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [menuWhite, setMenuWhite] = useState(false);
@@ -172,7 +177,7 @@ export function Header({ categories, windowScrolled }) {
                     dropdownVisible={dropdownVisible}
                     handleMouseEnterDropdownMenu={handleMouseEnterDropdownMenu}
                     handleMouseLeaveDropdownMenu={handleMouseLeaveDropdownMenu}
-                    categories={categories}
+                    productCategories={productCategories}
                 />
             </div>
             <MenuMobile menuMobileOpened={menuMobileOpened} handleCloseMenuMobile={handleCloseMenuMobile} setMenuMobileOpened={setMenuMobileOpened} />

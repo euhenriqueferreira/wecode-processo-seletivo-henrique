@@ -1,12 +1,22 @@
+// React
 import { useState } from "react";
+// Components
+import { useEffect } from "react";
 import { GeoLocalizationBar } from "./GeoLocalizationBar";
 import { GeoLocalizationModal } from "./GeoLocalizationModal";
 
 export function GeoLocalization({ windowScrolled }) {
-    const storedLocalization = localStorage.getItem('currentLocalization') ? JSON.parse(localStorage.getItem('currentLocalization')) : null;
+    const storedLocalization = JSON.parse(localStorage.getItem('currentLocalization')) || null;
 
     const [modalVisible, setModalVisible] = useState(storedLocalization ? false : true);
-    const [currentLocalization, setCurrentLocalization] = useState(storedLocalization ? storedLocalization.localidade : 'Indefinido');
+    const [currentLocalization, setCurrentLocalization] = useState(storedLocalization?.localidade || 'Indefinido');
+
+    useEffect(() => {
+        if (currentLocalization !== 'Indefinido') {
+            localStorage.setItem('currentLocalization', JSON.stringify({ localidade: currentLocalization }));
+        }
+    }, [currentLocalization]);
+
 
     function handleClickShowModal(event) {
         event.preventDefault();

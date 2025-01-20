@@ -1,3 +1,4 @@
+// Styles
 import './GeoLocalizationModal.scss';
 
 export function GeoLocalizationModal({ setCurrentLocalization, storedLocalization, modalVisible, handleClickHideModal }) {
@@ -10,6 +11,7 @@ export function GeoLocalizationModal({ setCurrentLocalization, storedLocalizatio
 
     async function handleFormSubmit(event) {
         event.preventDefault();
+
         const ZipCodeField = document.getElementById('zipCode');
         const insertedZipCode = ZipCodeField.value.trim();
         const regexZipCode = /^[0-9]{5}-?[0-9]{3}$/;
@@ -39,7 +41,6 @@ export function GeoLocalizationModal({ setCurrentLocalization, storedLocalizatio
     }
 
     async function fetchCurrentLocalFromAPI(zipCodeToSend) {
-
         const url = `https://viacep.com.br/ws/${zipCodeToSend}/json/`;
 
         try {
@@ -77,12 +78,6 @@ export function GeoLocalizationModal({ setCurrentLocalization, storedLocalizatio
                         <label htmlFor="uf">Estado</label>
                         <input type="text" name="uf" id="uf" placeholder='Estado' value={storedLocalization ? storedLocalization.estado : ''} disabled />
                     </div>
-                    {/* <div className='inputLine'>
-                        <label htmlFor="uf">Estado</label>
-                        <select name="uf" id="uf">
-                            <option value="Opcional" disabled selected>Opcional</option>
-                        </select>
-                    </div> */}
 
                     <button type="submit">Salvar endereço</button>
                 </form>

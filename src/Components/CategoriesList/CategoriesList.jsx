@@ -1,12 +1,14 @@
+// Styles
 import './CategoriesList.scss';
-
+// React Slick
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+// Data
+import { productCategories } from '../../utils';
 
-export function CategoriesList({ categories }) {
-
-    var settings = {
+export function CategoriesList() {
+    var sliderSettings = {
         dots: false,
         infinite: false,
         speed: 500,
@@ -19,7 +21,7 @@ export function CategoriesList({ categories }) {
         responsive: [
             {
                 breakpoint: 1199,
-                settings: {
+                sliderSettings: {
                     dots: false,
                     infinite: false,
                     speed: 500,
@@ -43,14 +45,13 @@ export function CategoriesList({ categories }) {
         ]
     }
 
-
     return (
         <div className='categoriesListWrapper'>
             <h2>Categorias</h2>
 
             <div className='categoriesList'>
-                <Slider {...settings}>
-                    {categories.map((category) => {
+                <Slider {...sliderSettings}>
+                    {productCategories.map((category) => {
                         return (
                             <a href='' key={category.id}>
                                 <div className='imageWrapper'>

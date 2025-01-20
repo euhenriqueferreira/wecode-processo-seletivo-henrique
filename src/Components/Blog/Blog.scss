@@ -55,20 +55,28 @@
         }
 
         .slick-prev {
-            right: calc(16px + 40px + 20px + 40px);
+            right: calc(16px + 40px + 30px + 40px);
             left: unset;
+
+            &::before {
+                content: '\276E';
+            }
         }
 
         .slick-next {
             right: 0;
             width: 16px;
             height: 16px;
+
+            &::before {
+                content: '\276F';
+            }
         }
 
         .slick-prev,
         .slick-next {
             z-index: 3;
-            top: calc(-3rem + 3px);
+            top: -3rem;
         }
 
         .slick-prev::before,

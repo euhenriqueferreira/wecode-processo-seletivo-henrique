@@ -1,92 +1,13 @@
-import { useState } from 'react';
+// Styles
 import './MenuMobile.scss';
+// React
+import { useState } from 'react';
+// Data
+import { menuMobileLinks } from '../../utils';
 
 export function MenuMobile({ menuMobileOpened, handleCloseMenuMobile, setMenuMobileOpened }) {
 
     const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null)
-
-    const menuItems = [
-        {
-            mainLinkName: 'Sapatos',
-            mainLinkUrl: '',
-        },
-        {
-            mainLinkName: 'Sapatos',
-            dropdownItems: [
-                {
-                    dropdownItemName: 'Scarpins',
-                    dropdownItemLink: '',
-                },
-                {
-                    dropdownItemName: 'Mocassim',
-                    dropdownItemLink: '',
-                },
-                {
-                    dropdownItemName: 'Sapatilhas',
-                    dropdownItemLink: '',
-                },
-                {
-                    dropdownItemName: 'Mules',
-                    dropdownItemLink: '',
-                },
-                {
-                    dropdownItemName: 'Peep Toe',
-                    dropdownItemLink: '',
-                },
-                {
-                    dropdownItemName: 'Oxford',
-                    dropdownItemLink: '',
-                },
-            ]
-        },
-        {
-            mainLinkName: 'Sandálias',
-            dropdownItems: [
-                {
-                    dropdownItemName: 'Item 1',
-                    dropdownItemLink: '',
-                },
-                {
-                    dropdownItemName: 'Item 2',
-                    dropdownItemLink: '',
-                },
-            ]
-        },
-        {
-            mainLinkName: 'Botas',
-            dropdownItems: [
-                {
-                    dropdownItemName: 'Item 1',
-                    dropdownItemLink: '',
-                },
-                {
-                    dropdownItemName: 'Item 2',
-                    dropdownItemLink: '',
-                },
-                {
-                    dropdownItemName: 'Item 3',
-                    dropdownItemLink: '',
-                },
-            ]
-        },
-        {
-            mainLinkName: 'Tênis',
-            dropdownItems: [
-                {
-                    dropdownItemName: 'Item 1',
-                    dropdownItemLink: '',
-                },
-                {
-                    dropdownItemName: 'Item 2',
-                    dropdownItemLink: '',
-                },
-            ]
-        },
-        {
-            mainLinkName: 'Outlet',
-            mainLinkUrl: '',
-        },
-    ]
 
     function handleDropdownOpen(index) {
         setDropdownOpenIndex(index)
@@ -96,6 +17,37 @@ export function MenuMobile({ menuMobileOpened, handleCloseMenuMobile, setMenuMob
         if (event.target.classList.contains('menuMobile')) {
             setMenuMobileOpened(false)
         }
+    }
+
+    function renderDropdown(dropdownItem, index) {
+        return (
+            <a key={index} href={dropdownItem.dropdownItemLink}>
+                {dropdownItem.dropdownItemName}
+            </a>
+        )
+    }
+
+    function renderMenuMobileItem(menuMobileItem, index) {
+        return (
+            <div key={index}>
+                {menuMobileItem.dropdownItems ? (
+                    <>
+                        <button data-index={index} onClick={() => handleDropdownOpen(index)}>
+                            {menuMobileItem.mainLinkName}
+                        </button>
+
+                        <div className={`dropdown ${dropdownOpenIndex === index ? 'opened' : ''}`}>
+                            {menuMobileItem.dropdownItems.map(renderDropdown)}
+                        </div>
+                    </>
+                ) : (
+                    <a href={menuMobileItem.mainLinkUrl || ''}>
+                        {menuMobileItem.mainLinkName}
+                    </a>
+                )}
+            </div>
+        )
+
     }
 
     return (
@@ -135,32 +87,7 @@ export function MenuMobile({ menuMobileOpened, handleCloseMenuMobile, setMenuMob
                     <a href="">Conheça</a>
                 </div>
                 <nav>
-                    {menuItems.map((menuItem, index) => {
-                        return (
-                            <div>
-                                {menuItem.dropdownItems ?
-                                    <>
-                                        <button data-index={index} onClick={() => handleDropdownOpen(index)}>
-                                            {menuItem.mainLinkName}
-                                        </button>
-                                        <div className={`dropdown ${dropdownOpenIndex === index ? 'opened' : ''}`}>
-                                            {menuItem.dropdownItems.map((dropdownItem) => {
-                                                return (
-                                                    <a href={dropdownItem.dropdownItemLink}>
-                                                        {dropdownItem.dropdownItemName}
-                                                    </a>
-                                                )
-                                            })}
-                                        </div>
-                                    </>
-                                    :
-                                    <a href={menuItem.mainLinkUrl || ''}>
-                                        {menuItem.mainLinkName}
-                                    </a>
-                                }
-                            </div>
-                        )
-                    })}
+                    {menuMobileLinks.map(renderMenuMobileItem)}
                 </nav>
             </div>
         </div>

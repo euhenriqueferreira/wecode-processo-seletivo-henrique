@@ -1,3 +1,4 @@
+// Styles
 import './PostCard.scss';
 
 export function PostCard({ post }) {

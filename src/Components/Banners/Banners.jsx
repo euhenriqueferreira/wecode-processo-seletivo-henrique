@@ -1,24 +1,24 @@
-import './Banners.scss'
+// Styles
+import './Banners.scss';
+// Data
+import { bannersDesktop, bannersMobile } from '../../utils';
 
-export function Banners() {
-
-    const banners = [
-        {
-            imageUrl: "static/images/banners/banner-grande.png",
-            imageAlt: "Seja simples, seja verdadeiro",
-            imageTitle: "Seja simples, seja verdadeiro",
-        },
-        {
-            imageUrl: "static/images/banners/banner-pequeno.png",
-            imageAlt: "Surpreendente a cada passo",
-            imageTitle: "Surpreendente a cada passo",
-        },
-    ]
-
+export function Banners({ isMobile }) {
     return (
         <section className="bannersSection">
-            <img src={banners[0].imageUrl} alt={banners[0].imageAlt} title={banners[0].imageTitle} loading='lazy' />
-            <img src={banners[1].imageUrl} alt={banners[1].imageAlt} title={banners[1].imageTitle} loading='lazy' />
+            {isMobile ?
+                bannersMobile.map((bannerMobile) => {
+                    return (
+                        <img src={bannerMobile.imageUrl} alt={bannerMobile.imageAlt} title={bannerMobile.imageTitle} loading='lazy' />
+                    )
+                })
+                :
+                bannersDesktop.map((banner) => {
+                    return (
+                        <img src={banner.imageUrl} alt={banner.imageAlt} title={banner.imageTitle} loading='lazy' />
+                    )
+                })
+            }
         </section>
     )
 }

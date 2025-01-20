@@ -105,8 +105,10 @@
                 text-decoration: none;
             }
 
-            a:last-child {
-                color: global.$red;
+            div:last-child {
+                a {
+                    color: global.$red;
+                }
             }
 
             button:has(+ .dropdown) {

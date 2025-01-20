@@ -1,3 +1,4 @@
+// Styles
 import './GeoLocalizationBar.scss'
 
 export function GeoLocalizationBar({ currentLocalization, handleClickShowModal, windowScrolled }) {

@@ -1,22 +1,11 @@
-import { useEffect, useState } from 'react';
+// Styles
 import './Newsletter.scss';
+// React
+import { useEffect, useState } from 'react';
+// Data
+import { discountCoupons } from '../../utils';
 
 export function Newsletter() {
-
-    const coupons = [
-        {
-            id: 1,
-            couponName: "BEMVINDO"
-        },
-        {
-            id: 2,
-            couponName: "CUPOM10"
-        },
-        {
-            id: 3,
-            couponName: "ECONOMIZA10"
-        },
-    ]
 
     const [registeredOnNewsletter, setRegisteredOnNewsletter] = useState(
         localStorage.getItem('registeredOnNewsletter') || ''
@@ -33,12 +22,16 @@ export function Newsletter() {
     useEffect(() => {
         // Get a random coupon from the list
         const couponStored = localStorage.getItem('selectedCoupon');
-        const selectedCoupon = couponStored || coupons[Math.floor(Math.random() * coupons.length)].couponName;
+        const selectedCoupon = couponStored || getRandomCoupon();
 
         // Stores on the state and local storage
         setSelectedCoupon(selectedCoupon)
         localStorage.setItem('selectedCoupon', selectedCoupon);
     }, [])
+
+    function getRandomCoupon() {
+        return discountCoupons[Math.floor(Math.random() * discountCoupons.length)].couponName
+    }
 
     function handleCouponFormSubmit(event) {
         event.preventDefault();
@@ -48,14 +41,12 @@ export function Newsletter() {
 
         // Email Required
         if (!insertedEmail) {
-            showError(errorSpan, "O campo e-mail é obrigatório.")
-            return;
+            return showError(errorSpan, "O campo e-mail é obrigatório.")
         }
 
         // Email should be an email
         if (!isValidEmail(insertedEmail)) {
-            showError(errorSpan, "O e-mail é inválido.")
-            return;
+            return showError(errorSpan, "O e-mail é inválido.")
         }
 
         localStorage.setItem('registeredOnNewsletter', true);
