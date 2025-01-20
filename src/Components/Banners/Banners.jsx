@@ -17,8 +17,8 @@ export function Banners() {
 
     return (
         <section className="bannersSection">
-            <img src={banners[0].imageUrl} alt={banners[0].imageAlt} title={banners[0].imageTitle} />
-            <img src={banners[1].imageUrl} alt={banners[1].imageAlt} title={banners[1].imageTitle} />
+            <img src={banners[0].imageUrl} alt={banners[0].imageAlt} title={banners[0].imageTitle} loading='lazy' />
+            <img src={banners[1].imageUrl} alt={banners[1].imageAlt} title={banners[1].imageTitle} loading='lazy' />
         </section>
     )
 }

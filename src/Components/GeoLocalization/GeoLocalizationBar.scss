@@ -17,6 +17,20 @@
         line-height: 1.6;
     }
 
+    p {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+
+        span {
+            display: block;
+            max-width: 35vw;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
     a {
         transition: color 0.2s;
     }
@@ -39,4 +53,18 @@
     top: 0;
     left: 0;
     z-index: 4;
+}
+
+@media screen and (max-width: 575px) {
+    .geoLocalizationWrapper {
+        p {
+            span {
+                max-width: 35vw;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
 }

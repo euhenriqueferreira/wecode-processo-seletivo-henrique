@@ -1,0 +1,154 @@
+@use '../../index.scss' as global;
+
+@media screen and (min-width: 991px) {
+    .menuMobile {
+        display: none;
+    }
+}
+
+.menuMobile {
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    height: 100vh;
+    width: 100vw;
+    transition: left 0.3s;
+
+
+    .menuMobileWrapper {
+        width: 84%;
+        max-width: 350px;
+        height: 100%;
+        background: white;
+
+        header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .logo {
+                width: 102px;
+                height: auto;
+                object-fit: scale-down;
+            }
+
+            button.closeMenuMobile {
+                width: 1.5rem;
+                height: 1.5rem;
+                background: global.$gray-100;
+                border: 0;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    width: 0.5rem;
+                    height: 0.5rem;
+                    color: global.$gray-600
+                }
+            }
+        }
+
+        .banner {
+            position: relative;
+            height: 7.5rem;
+            padding: 1rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            p,
+            a {
+                position: relative;
+                z-index: 2;
+            }
+
+            p {
+                font-size: 0.875rem;
+                color: global.$white;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
+
+            a {
+                font-size: 0.75rem;
+                color: global.$white;
+                font-weight: 300;
+                text-decoration: underline;
+            }
+        }
+
+        nav {
+            padding: 0.75rem 1rem;
+
+            a,
+            button {
+                width: 100%;
+                background: transparent;
+                border: 0;
+                display: block;
+                font-size: 0.875rem;
+                color: global.$gray-600;
+                font-weight: 400;
+                padding: 0.75rem 0;
+                text-decoration: none;
+            }
+
+            a:last-child {
+                color: global.$red;
+            }
+
+            button:has(+ .dropdown) {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                &::after {
+                    content: '\276F';
+                    display: block;
+                    font-size: 12px;
+                    width: fit-content;
+                }
+            }
+
+            div {
+                .dropdown {
+                    pointer-events: none;
+                    max-height: 0;
+                    opacity: 0;
+                    padding: 0 0.75rem;
+                    transition: opacity 0.1s;
+
+                    a {
+                        padding: 0.5rem 0;
+                        font-weight: 300;
+                        color: global.$gray-600;
+                    }
+                }
+
+                .dropdown.opened {
+                    pointer-events: visible;
+                    max-height: none;
+                    opacity: 1;
+                }
+            }
+
+        }
+    }
+}
+
+
+.menuMobile.opened {
+    left: 0;
+}

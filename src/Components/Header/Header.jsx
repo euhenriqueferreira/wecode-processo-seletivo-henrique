@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { DropdownMenu } from './DropdownMenu';
 import './Header.scss';
+import { MenuMobile } from './MenuMobile';
 
 export function Header({ categories, windowScrolled }) {
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [menuWhite, setMenuWhite] = useState(false);
+
+    const [menuMobileOpened, setMenuMobileOpened] = useState(false);
 
     function handleMouseEnterHeader() {
         setMenuWhite(true)
@@ -34,10 +37,54 @@ export function Header({ categories, windowScrolled }) {
         setMenuWhite(false)
     }
 
+    function handleOpenMenuMobile(event) {
+        event.preventDefault();
+
+        setMenuMobileOpened(true);
+    }
+
+    function handleCloseMenuMobile() {
+        setMenuMobileOpened(false);
+    }
+
     return (
         <header className={`header ${menuWhite ? 'hovered' : ''} ${windowScrolled ? 'scrolled' : ''}`}>
             <div className="headerContainer">
                 <div className="headerWrapper" onMouseEnter={handleMouseEnterHeader} onMouseLeave={handleMouseLeaveHeader}>
+                    <div className='mobileLeftLinks'>
+                        <ul>
+                            <li>
+                                <a href="" aria-label='Abrir muen lateral' onClick={handleOpenMenuMobile}>
+                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_7095_131)">
+                                            <path d="M14 6.91663H0V8.08329H14V6.91663Z" fill="currentColor" />
+                                            <path d="M14 2.83337H0V4.00004H14V2.83337Z" fill="currentColor" />
+                                            <path d="M14 11H0V12.1667H14V11Z" fill="currentColor" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_7095_131">
+                                                <rect width="14" height="14" fill="currentColor" transform="translate(0 0.5)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" aria-label='Pesquisar'>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clipPath="url(#clip0_3006_1594)">
+                                            <path d="M19.9998 18.8215L14.7815 13.6032C16.137 11.9453 16.8035 9.82989 16.643 7.69445C16.4826 5.55901 15.5075 3.56693 13.9195 2.13025C12.3314 0.693577 10.252 -0.0777715 8.11119 -0.024245C5.97039 0.0292815 3.93207 0.903588 2.41783 2.41783C0.903588 3.93207 0.0292815 5.97039 -0.024245 8.11119C-0.0777715 10.252 0.693577 12.3314 2.13025 13.9195C3.56693 15.5075 5.55901 16.4826 7.69445 16.643C9.82989 16.8035 11.9453 16.137 13.6032 14.7815L18.8215 19.9998L19.9998 18.8215ZM8.33315 14.9998C7.01461 14.9998 5.72568 14.6088 4.62935 13.8763C3.53302 13.1437 2.67854 12.1025 2.17395 10.8844C1.66937 9.6662 1.53735 8.32576 1.79458 7.03255C2.05182 5.73934 2.68676 4.55146 3.61911 3.61911C4.55146 2.68676 5.73934 2.05182 7.03255 1.79458C8.32576 1.53735 9.6662 1.66937 10.8844 2.17395C12.1025 2.67854 13.1437 3.53302 13.8763 4.62935C14.6088 5.72568 14.9998 7.01461 14.9998 8.33315C14.9978 10.1007 14.2948 11.7952 13.045 13.045C11.7952 14.2948 10.1007 14.9978 8.33315 14.9998Z" fill="currentColor" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_3006_1594">
+                                                <rect width="20" height="20" fill="currentColor" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div className="logo">
                         <svg width="136" height="32" viewBox="0 0 136 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_7007_385)">
@@ -75,7 +122,7 @@ export function Header({ categories, windowScrolled }) {
                     <div className="quickLinks">
                         <ul>
                             <li>
-                                <a href="">
+                                <a href="" aria-label='Pesquisar'>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clipPath="url(#clip0_3006_1594)">
                                             <path d="M19.9998 18.8215L14.7815 13.6032C16.137 11.9453 16.8035 9.82989 16.643 7.69445C16.4826 5.55901 15.5075 3.56693 13.9195 2.13025C12.3314 0.693577 10.252 -0.0777715 8.11119 -0.024245C5.97039 0.0292815 3.93207 0.903588 2.41783 2.41783C0.903588 3.93207 0.0292815 5.97039 -0.024245 8.11119C-0.0777715 10.252 0.693577 12.3314 2.13025 13.9195C3.56693 15.5075 5.55901 16.4826 7.69445 16.643C9.82989 16.8035 11.9453 16.137 13.6032 14.7815L18.8215 19.9998L19.9998 18.8215ZM8.33315 14.9998C7.01461 14.9998 5.72568 14.6088 4.62935 13.8763C3.53302 13.1437 2.67854 12.1025 2.17395 10.8844C1.66937 9.6662 1.53735 8.32576 1.79458 7.03255C2.05182 5.73934 2.68676 4.55146 3.61911 3.61911C4.55146 2.68676 5.73934 2.05182 7.03255 1.79458C8.32576 1.53735 9.6662 1.66937 10.8844 2.17395C12.1025 2.67854 13.1437 3.53302 13.8763 4.62935C14.6088 5.72568 14.9998 7.01461 14.9998 8.33315C14.9978 10.1007 14.2948 11.7952 13.045 13.045C11.7952 14.2948 10.1007 14.9978 8.33315 14.9998Z" fill="currentColor" />
@@ -89,7 +136,7 @@ export function Header({ categories, windowScrolled }) {
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="" aria-label='Ir para minha conta'>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clipPath="url(#clip0_3006_1597)">
                                             <path d="M17.5 19.9998H15.8333V15.7973C15.8327 15.144 15.5728 14.5176 15.1109 14.0556C14.6489 13.5937 14.0225 13.3338 13.3692 13.3332H6.63083C5.9775 13.3338 5.35111 13.5937 4.88914 14.0556C4.42716 14.5176 4.16733 15.144 4.16667 15.7973V19.9998H2.5V15.7973C2.50132 14.7022 2.93696 13.6523 3.71135 12.8779C4.48575 12.1035 5.53567 11.6678 6.63083 11.6665H13.3692C14.4643 11.6678 15.5143 12.1035 16.2886 12.8779C17.063 13.6523 17.4987 14.7022 17.5 15.7973V19.9998Z" fill="currentColor" />
@@ -104,7 +151,7 @@ export function Header({ categories, windowScrolled }) {
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="" aria-label='Abrir carrinho de compras'>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clipPath="url(#clip0_7007_375)">
                                             <path d="M15 5C15 3.67392 14.4732 2.40215 13.5355 1.46447C12.5979 0.526784 11.3261 0 10 0C8.67392 0 7.40215 0.526784 6.46447 1.46447C5.52678 2.40215 5 3.67392 5 5H0V17.5C0 18.163 0.263392 18.7989 0.732233 19.2678C1.20107 19.7366 1.83696 20 2.5 20H17.5C18.163 20 18.7989 19.7366 19.2678 19.2678C19.7366 18.7989 20 18.163 20 17.5V5H15ZM10 1.66667C10.8841 1.66667 11.7319 2.01786 12.357 2.64298C12.9821 3.2681 13.3333 4.11594 13.3333 5H6.66667C6.66667 4.11594 7.01786 3.2681 7.64298 2.64298C8.2681 2.01786 9.11594 1.66667 10 1.66667ZM18.3333 17.5C18.3333 17.721 18.2455 17.933 18.0893 18.0893C17.933 18.2455 17.721 18.3333 17.5 18.3333H2.5C2.27899 18.3333 2.06702 18.2455 1.91074 18.0893C1.75446 17.933 1.66667 17.721 1.66667 17.5V6.66667H5V8.33333H6.66667V6.66667H13.3333V8.33333H15V6.66667H18.3333V17.5Z" fill="currentColor" />
@@ -128,6 +175,7 @@ export function Header({ categories, windowScrolled }) {
                     categories={categories}
                 />
             </div>
+            <MenuMobile menuMobileOpened={menuMobileOpened} handleCloseMenuMobile={handleCloseMenuMobile} setMenuMobileOpened={setMenuMobileOpened} />
         </header >
     )
 }
