@@ -9,7 +9,6 @@ export function GeoLocalization(props) {
     const storedLocalization = JSON.parse(localStorage.getItem('currentLocalization')) || null;
 
     const [isModalVisible, setIsModalVisible] = useState(storedLocalization ? false : true);
-    // const [isModalVisible, setIsModalVisible] = useState(storedLocalization ? false : true);
     const [currentLocalization, setCurrentLocalization] = useState(storedLocalization?.localidade || 'Indefinido');
 
     useEffect(() => {
