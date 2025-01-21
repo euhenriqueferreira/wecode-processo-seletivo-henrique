@@ -16,6 +16,8 @@ import { Releases } from './Components/Releases/Releases';
 export function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 575)
   const [windowScrolled, setWindowScrolled] = useState(false);
+  const [shoppingCartAddedItems, setShoppingCartAddedItems] = useState([])
+
 
   useEffect(() => {
     function handleScreenResize() {
@@ -40,7 +42,7 @@ export function App() {
   return (
     <div>
       <GeoLocalization windowScrolled={windowScrolled} />
-      <Header windowScrolled={windowScrolled} />
+      <Header windowScrolled={windowScrolled} shoppingCartAddedItems={shoppingCartAddedItems} />
       <MainSlideshow isMobile={isMobile} />
       <CategoriesList />
       <Banners isMobile={isMobile} />

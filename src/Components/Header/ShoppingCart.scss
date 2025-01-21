@@ -1,0 +1,160 @@
+@use '../../index.scss' as global;
+
+.shoppingCart {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    right: -100vw;
+    top: 0;
+    transition: right 0.3s;
+
+    .shoppingCartWrapper {
+        height: 100vh;
+        width: 500px;
+        background: global.$white;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        transition: right 0.5s;
+
+        header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h2 {
+                font-size: 1.5rem;
+                line-height: 1.2;
+                color: global.$gray-600;
+                font-weight: 400;
+            }
+
+            button.closeShoppingCart {
+                width: 1.5rem;
+                height: 1.5rem;
+                background: global.$gray-100;
+                border: 0;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    width: 0.5rem;
+                    height: 0.5rem;
+                    color: global.$gray-600
+                }
+            }
+        }
+
+        ul.itemsList {
+            padding: 1rem 1.5rem;
+            flex: 1;
+            overflow: auto;
+        }
+
+        footer {
+            background: global.$white;
+            padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+            text-align: center;
+
+            ul {
+                margin-bottom: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.8rem;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    p,
+                    span {
+                        font-size: 0.875rem;
+                        color: global.$gray-600;
+                        font-weight: 400;
+                    }
+
+                    span.discount {
+                        color: global.$red;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            a.proceed {
+                font-size: 0.875rem;
+                width: 100%;
+                padding: 0.875rem 1.5rem;
+                background: global.$red;
+                color: global.$white;
+                font-weight: 400;
+                display: block;
+                text-align: center;
+                text-decoration: none;
+                margin-bottom: 1rem;
+                transition: filter 0.2s;
+
+                &:hover {
+                    filter: brightness(1.1);
+                }
+            }
+
+            a.back {
+                font-size: 0.875rem;
+                line-height: 1.2;
+                text-decoration: underline;
+                color: global.$gray-600;
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+.shoppingCart.opened {
+    right: 0;
+}
+
+
+@media screen and (max-width:767px) {
+    .shoppingCart {
+        .shoppingCartWrapper {
+            width: 65vw;
+        }
+    }
+}
+
+@media screen and (max-width:575px) {
+    .shoppingCart {
+        .shoppingCartWrapper {
+            width: 85vw;
+
+            header {
+                padding: 2rem 1rem 1rem 1rem;
+
+                button.closeShoppingCart {
+                    svg {
+                        color: global.$gray-600
+                    }
+                }
+            }
+
+            ul.itemsList {
+                padding: 1rem;
+                // flex: 1;
+                // overflow: auto;
+            }
+
+            footer {
+                padding: 1.5rem 1rem 2.5rem 1rem;
+
+                a.back {
+                    font-size: 0.75rem;
+                }
+            }
+        }
+    }
+}
