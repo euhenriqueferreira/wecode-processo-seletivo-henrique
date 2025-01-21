@@ -65,6 +65,10 @@ export function Header({ windowScrolled, shoppingCartAddedItems, setShoppingCart
         setShoppingCartOpened(false);
     }
 
+    function countShoppingCartItems() {
+        return shoppingCartAddedItems.length || 0;
+    }
+
     return (
         <header className={`header ${menuWhite ? 'hovered' : ''} ${windowScrolled ? 'scrolled' : ''}`}>
             <div className="headerContainer">
@@ -180,7 +184,7 @@ export function Header({ windowScrolled, shoppingCartAddedItems, setShoppingCart
                                             </clipPath>
                                         </defs>
                                     </svg>
-                                    <span>0</span>
+                                    <span>{countShoppingCartItems()}</span>
                                 </a>
                             </li>
                         </ul>
@@ -195,6 +199,6 @@ export function Header({ windowScrolled, shoppingCartAddedItems, setShoppingCart
             </div>
             <MenuMobile menuMobileOpened={menuMobileOpened} handleCloseMenuMobile={handleCloseMenuMobile} setMenuMobileOpened={setMenuMobileOpened} />
             <ShoppingCart setShoppingCartOpened={setShoppingCartOpened} shoppingCartOpened={shoppingCartOpened} handleCloseShoppingCart={handleCloseShoppingCart} shoppingCartAddedItems={shoppingCartAddedItems} setShoppingCartAddedItems={setShoppingCartAddedItems} />
-        </header >
+        </header>
     )
 }
