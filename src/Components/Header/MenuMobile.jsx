@@ -5,7 +5,7 @@ import { useState } from 'react';
 // Data
 import { menuMobileLinks } from '../../utils';
 
-export function MenuMobile({ menuMobileOpened, handleCloseMenuMobile, setMenuMobileOpened }) {
+export function MenuMobile({ isMenuMobileOpened, handleCloseMenuMobile }) {
 
     const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null)
 
@@ -15,7 +15,7 @@ export function MenuMobile({ menuMobileOpened, handleCloseMenuMobile, setMenuMob
 
     function handleMenuMobileClick(event) {
         if (event.target.classList.contains('menuMobile')) {
-            setMenuMobileOpened(false)
+            handleCloseMenuMobile()
         }
     }
 
@@ -51,7 +51,7 @@ export function MenuMobile({ menuMobileOpened, handleCloseMenuMobile, setMenuMob
     }
 
     return (
-        <div className={`menuMobile ${menuMobileOpened ? 'opened' : ''}`} onClick={handleMenuMobileClick}>
+        <div className={`menuMobile ${isMenuMobileOpened ? 'opened' : ''}`} onClick={handleMenuMobileClick}>
             <div className="menuMobileWrapper">
                 <header>
                     <div className="logo">

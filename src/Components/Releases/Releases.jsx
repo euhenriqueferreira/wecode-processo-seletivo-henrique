@@ -12,7 +12,7 @@ import { productReleases } from "../../utils";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { AddToCartModal } from "./AddToCartModal";
 
-export function Releases({ setShoppingCartAddedItems }) {
+export function Releases({ setProductsInCart }) {
     var settings = {
         dots: true,
         infinite: false,
@@ -87,7 +87,7 @@ export function Releases({ setShoppingCartAddedItems }) {
                     })}
                 </Slider>
             </div>
-            {Object.keys(productToAddToCart).length > 0 && <AddToCartModal productToAddToCart={productToAddToCart} setProductToAddToCart={setProductToAddToCart} setShoppingCartAddedItems={setShoppingCartAddedItems} />}
+            {Object.keys(productToAddToCart).length > 0 && <AddToCartModal productToAddToCart={productToAddToCart} setProductToAddToCart={setProductToAddToCart} setProductsInCart={setProductsInCart} />}
 
         </div>
     )

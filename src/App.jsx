@@ -15,8 +15,8 @@ import { Releases } from './Components/Releases/Releases';
 
 export function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 575)
-  const [windowScrolled, setWindowScrolled] = useState(false);
-  const [shoppingCartAddedItems, setShoppingCartAddedItems] = useState([])
+  const [hasWindowScrolled, setHasWindowScrolled] = useState(false);
+  const [productsInCart, setProductsInCart] = useState([])
 
 
   useEffect(() => {
@@ -30,27 +30,21 @@ export function App() {
   }, [])
 
   useEffect(() => {
-    const handleWindowScroll = function () {
-      setWindowScrolled(window.scrollY > 0);
+    function handleWindowScroll() {
+      setHasWindowScrolled(window.scrollY > 0);
     };
-
     window.addEventListener('scroll', handleWindowScroll);
-
     return () => window.removeEventListener('scroll', handleWindowScroll);
   }, []);
 
-  useEffect(() => {
-    console.log(shoppingCartAddedItems)
-  }, [shoppingCartAddedItems])
-
   return (
     <div>
-      <GeoLocalization windowScrolled={windowScrolled} />
-      <Header windowScrolled={windowScrolled} shoppingCartAddedItems={shoppingCartAddedItems} setShoppingCartAddedItems={setShoppingCartAddedItems} />
+      <GeoLocalization hasWindowScrolled={hasWindowScrolled} />
+      <Header hasWindowScrolled={hasWindowScrolled} productsInCart={productsInCart} setProductsInCart={setProductsInCart} />
       <MainSlideshow isMobile={isMobile} />
       <CategoriesList />
       <Banners isMobile={isMobile} />
-      <Releases setShoppingCartAddedItems={setShoppingCartAddedItems} />
+      <Releases setProductsInCart={setProductsInCart} />
       <Blog />
       <Newsletter />
       <Footer />

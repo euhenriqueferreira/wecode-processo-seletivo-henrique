@@ -5,7 +5,7 @@ import { useState } from 'react';
 // Data
 import { productCategories } from '../../utils';
 
-export function DropdownMenu({ dropdownVisible, handleMouseEnterDropdownMenu, handleMouseLeaveDropdownMenu }) {
+export function DropdownMenu({ isDropdownVisible, handleMouseEnterDropdownMenu, handleMouseLeaveDropdownMenu }) {
 
     const [categoryImage, setCategoryImage] = useState({
         url: productCategories[0].imageUrl,
@@ -25,7 +25,7 @@ export function DropdownMenu({ dropdownVisible, handleMouseEnterDropdownMenu, ha
         <div className='dropdownWrapper' >
             <div className='auxDiv' onMouseEnter={handleMouseEnterDropdownMenu} onMouseLeave={handleMouseLeaveDropdownMenu}></div>
 
-            <div className={`dropdownContainer ${dropdownVisible ? 'visible' : ''}`} onMouseEnter={handleMouseEnterDropdownMenu} onMouseLeave={handleMouseLeaveDropdownMenu}>
+            <div className={`dropdownContainer ${isDropdownVisible ? 'visible' : ''}`} onMouseEnter={handleMouseEnterDropdownMenu} onMouseLeave={handleMouseLeaveDropdownMenu}>
                 <ul>
                     {productCategories.map((category => {
                         return (

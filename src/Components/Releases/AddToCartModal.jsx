@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './AddToCartModal.scss';
 
-export function AddToCartModal({ setProductToAddToCart, productToAddToCart, setShoppingCartAddedItems }) {
+export function AddToCartModal({ setProductToAddToCart, productToAddToCart, setProductsInCart }) {
 
     const [selectedNumber, setSelectedNumber] = useState(null)
 
@@ -12,7 +12,7 @@ export function AddToCartModal({ setProductToAddToCart, productToAddToCart, setS
     function handleAddProductToCart(selectedNumber) {
         const productWithNumberSelected = { ...productToAddToCart, selectedNumber: selectedNumber, qty: 1 }
 
-        setShoppingCartAddedItems(prevItems => [
+        setProductsInCart(prevItems => [
             ...prevItems,
             productWithNumberSelected
         ])

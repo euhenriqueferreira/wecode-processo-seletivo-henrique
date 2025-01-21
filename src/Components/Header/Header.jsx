@@ -9,68 +9,97 @@ import { DropdownMenu } from './DropdownMenu';
 import { MenuMobile } from './MenuMobile';
 import { ShoppingCart } from './ShoppingCart';
 
-export function Header({ windowScrolled, shoppingCartAddedItems, setShoppingCartAddedItems }) {
+export function Header({ hasWindowScrolled, productsInCart, setProductsInCart }) {
+    const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+    const [isMenuWhite, setIsMenuWhite] = useState(false);
 
-    const [dropdownVisible, setDropdownVisible] = useState(false);
-    const [menuWhite, setMenuWhite] = useState(false);
+    const [isMenuMobileOpened, setIsMenuMobileOpened] = useState(false);
+    const [isShoppingCartOpened, setIsShoppingCartOpened] = useState(false);
 
-    const [menuMobileOpened, setMenuMobileOpened] = useState(false);
-    const [shoppingCartOpened, setShoppingCartOpened] = useState(false);
 
+    // When the mouse leaves the header
     function handleMouseEnterHeader() {
-        setMenuWhite(true)
+        setIsMenuWhite(true)
     }
 
+    // When the mouse enter the header
     function handleMouseLeaveHeader() {
-        setMenuWhite(false)
+        setIsMenuWhite(false)
     }
 
+    // When the mouse enter the nav link
     function handleMouseEnterNavigationLink(event) {
-        setMenuWhite(true)
-        setDropdownVisible(true)
+        setIsMenuWhite(true)
+        setIsDropdownVisible(true)
     }
 
+    // When the mouse leaves the nav link
     function handleMouseLeaveNavigationLink(event) {
-        setDropdownVisible(false)
+        setIsDropdownVisible(false)
     }
 
+    // When the mouse enter the dropdown menu
     function handleMouseEnterDropdownMenu() {
-        setDropdownVisible(true)
-        setMenuWhite(true)
+        setIsDropdownVisible(true)
+        setIsMenuWhite(true)
     }
 
+    // When the mouse leaves the dropdown menu
     function handleMouseLeaveDropdownMenu() {
-        setDropdownVisible(false)
-        setMenuWhite(false)
+        setIsDropdownVisible(false)
+        setIsMenuWhite(false)
+    }
+
+    function show(event = null, state) {
+        event && event.preventDefault();
+        if (state === 'menuMobile') {
+            setIsMenuMobileOpened(true);
+        }
+
+        if (state === 'shoppingCart') {
+            setIsShoppingCartOpened(true);
+        }
+    }
+
+    function hide(event = null, state) {
+        event && event.preventDefault();
+        if (state === 'menuMobile') {
+            setIsMenuMobileOpened(false);
+        }
+
+        if (state === 'shoppingCart') {
+            setIsShoppingCartOpened(false);
+        }
     }
 
     function handleOpenMenuMobile(event) {
-        event.preventDefault();
-
-        setMenuMobileOpened(true);
+        show(event, 'menuMobile');
     }
 
-    function handleCloseMenuMobile() {
-        setMenuMobileOpened(false);
+    function handleCloseMenuMobile(event) {
+        hide(event, 'menuMobile')
     }
 
     function handleOpenShoppingCart(event) {
-        event.preventDefault();
-
-        setShoppingCartOpened(true);
+        show(event, 'shoppingCart');
     }
 
     function handleCloseShoppingCart(event) {
-        event.preventDefault();
-        setShoppingCartOpened(false);
+        hide(event, 'shoppingCart')
     }
 
+    // Counts the number of items in the shopping cart.
     function countShoppingCartItems() {
-        return shoppingCartAddedItems.length || 0;
+        return productsInCart.length || 0;
+    }
+
+    // Update 
+    function handleUpdateCartProducts(products) {
+        setProductsInCart(products);
     }
 
     return (
-        <header className={`header ${menuWhite ? 'hovered' : ''} ${windowScrolled ? 'scrolled' : ''}`}>
+        <header className={`header ${isMenuWhite ? 'hovered' : ''} ${hasWindowScrolled ? 'scrolled' : ''}`}>
             <div className="headerContainer">
                 <div className="headerWrapper" onMouseEnter={handleMouseEnterHeader} onMouseLeave={handleMouseLeaveHeader}>
                     <div className='mobileLeftLinks'>
@@ -191,14 +220,14 @@ export function Header({ windowScrolled, shoppingCartAddedItems, setShoppingCart
                     </div>
                 </div>
                 <DropdownMenu
-                    dropdownVisible={dropdownVisible}
+                    isDropdownVisible={isDropdownVisible}
                     handleMouseEnterDropdownMenu={handleMouseEnterDropdownMenu}
                     handleMouseLeaveDropdownMenu={handleMouseLeaveDropdownMenu}
                     productCategories={productCategories}
                 />
             </div>
-            <MenuMobile menuMobileOpened={menuMobileOpened} handleCloseMenuMobile={handleCloseMenuMobile} setMenuMobileOpened={setMenuMobileOpened} />
-            <ShoppingCart setShoppingCartOpened={setShoppingCartOpened} shoppingCartOpened={shoppingCartOpened} handleCloseShoppingCart={handleCloseShoppingCart} shoppingCartAddedItems={shoppingCartAddedItems} setShoppingCartAddedItems={setShoppingCartAddedItems} />
+            <MenuMobile isMenuMobileOpened={isMenuMobileOpened} handleCloseMenuMobile={handleCloseMenuMobile} />
+            <ShoppingCart isShoppingCartOpened={isShoppingCartOpened} productsInCart={productsInCart} handleCloseShoppingCart={handleCloseShoppingCart} handleUpdateCartProducts={handleUpdateCartProducts} />
         </header>
     )
 }

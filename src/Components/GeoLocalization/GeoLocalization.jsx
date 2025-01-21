@@ -5,10 +5,11 @@ import { useEffect } from "react";
 import { GeoLocalizationBar } from "./GeoLocalizationBar";
 import { GeoLocalizationModal } from "./GeoLocalizationModal";
 
-export function GeoLocalization({ windowScrolled }) {
+export function GeoLocalization(props) {
     const storedLocalization = JSON.parse(localStorage.getItem('currentLocalization')) || null;
 
-    const [modalVisible, setModalVisible] = useState(storedLocalization ? false : true);
+    const [isModalVisible, setIsModalVisible] = useState(storedLocalization ? false : true);
+    // const [isModalVisible, setIsModalVisible] = useState(storedLocalization ? false : true);
     const [currentLocalization, setCurrentLocalization] = useState(storedLocalization?.localidade || 'Indefinido');
 
     useEffect(() => {
@@ -20,17 +21,17 @@ export function GeoLocalization({ windowScrolled }) {
 
     function handleClickShowModal(event) {
         event.preventDefault();
-        setModalVisible(true);
+        setIsModalVisible(true);
     }
 
     function handleClickHideModal() {
-        setModalVisible(false);
+        setIsModalVisible(false);
     }
 
     return (
         <>
-            <GeoLocalizationBar currentLocalization={currentLocalization} handleClickShowModal={handleClickShowModal} windowScrolled={windowScrolled} />
-            <GeoLocalizationModal setCurrentLocalization={setCurrentLocalization} storedLocalization={storedLocalization} modalVisible={modalVisible} handleClickHideModal={handleClickHideModal} />
+            <GeoLocalizationBar currentLocalization={currentLocalization} handleClickShowModal={handleClickShowModal} hasWindowScrolled={props.hasWindowScrolled} />
+            <GeoLocalizationModal setCurrentLocalization={setCurrentLocalization} storedLocalization={storedLocalization} isModalVisible={isModalVisible} handleClickHideModal={handleClickHideModal} />
         </>
     )
 }
