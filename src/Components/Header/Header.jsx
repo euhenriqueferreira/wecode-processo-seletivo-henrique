@@ -9,7 +9,7 @@ import { DropdownMenu } from './DropdownMenu';
 import { MenuMobile } from './MenuMobile';
 import { ShoppingCart } from './ShoppingCart';
 
-export function Header({ windowScrolled }) {
+export function Header({ windowScrolled, shoppingCartAddedItems, setShoppingCartAddedItems }) {
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [menuWhite, setMenuWhite] = useState(false);
@@ -74,7 +74,7 @@ export function Header({ windowScrolled }) {
                             <li>
                                 <a href="" aria-label='Abrir muen lateral' onClick={handleOpenMenuMobile}>
                                     <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_7095_131)">
+                                        <g clipPath="url(#clip0_7095_131)">
                                             <path d="M14 6.91663H0V8.08329H14V6.91663Z" fill="currentColor" />
                                             <path d="M14 2.83337H0V4.00004H14V2.83337Z" fill="currentColor" />
                                             <path d="M14 11H0V12.1667H14V11Z" fill="currentColor" />
@@ -194,7 +194,7 @@ export function Header({ windowScrolled }) {
                 />
             </div>
             <MenuMobile menuMobileOpened={menuMobileOpened} handleCloseMenuMobile={handleCloseMenuMobile} setMenuMobileOpened={setMenuMobileOpened} />
-            <ShoppingCart setShoppingCartOpened={setShoppingCartOpened} shoppingCartOpened={shoppingCartOpened} handleCloseShoppingCart={handleCloseShoppingCart} />
+            <ShoppingCart setShoppingCartOpened={setShoppingCartOpened} shoppingCartOpened={shoppingCartOpened} handleCloseShoppingCart={handleCloseShoppingCart} shoppingCartAddedItems={shoppingCartAddedItems} setShoppingCartAddedItems={setShoppingCartAddedItems} />
         </header >
     )
 }

@@ -39,14 +39,18 @@ export function App() {
     return () => window.removeEventListener('scroll', handleWindowScroll);
   }, []);
 
+  useEffect(() => {
+    console.log(shoppingCartAddedItems)
+  }, [shoppingCartAddedItems])
+
   return (
     <div>
       <GeoLocalization windowScrolled={windowScrolled} />
-      <Header windowScrolled={windowScrolled} shoppingCartAddedItems={shoppingCartAddedItems} />
+      <Header windowScrolled={windowScrolled} shoppingCartAddedItems={shoppingCartAddedItems} setShoppingCartAddedItems={setShoppingCartAddedItems} />
       <MainSlideshow isMobile={isMobile} />
       <CategoriesList />
       <Banners isMobile={isMobile} />
-      <Releases />
+      <Releases setShoppingCartAddedItems={setShoppingCartAddedItems} />
       <Blog />
       <Newsletter />
       <Footer />

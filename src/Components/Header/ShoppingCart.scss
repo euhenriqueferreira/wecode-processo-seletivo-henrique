@@ -17,6 +17,9 @@
         position: absolute;
         right: 0;
         transition: right 0.5s;
+        -webkit-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.15);
 
         header {
             padding: 1.5rem;
@@ -144,8 +147,6 @@
 
             ul.itemsList {
                 padding: 1rem;
-                // flex: 1;
-                // overflow: auto;
             }
 
             footer {

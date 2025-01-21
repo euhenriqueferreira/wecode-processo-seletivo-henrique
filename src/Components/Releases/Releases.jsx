@@ -10,15 +10,16 @@ import "slick-carousel/slick/slick.css";
 import { productReleases } from "../../utils";
 // Components
 import { ProductCard } from "../ProductCard/ProductCard";
+import { AddToCartModal } from "./AddToCartModal";
 
-export function Releases() {
+export function Releases({ setShoppingCartAddedItems }) {
     var settings = {
         dots: true,
         infinite: false,
         speed: 500,
         slidesToShow: 5,
         slidesToScroll: 5,
-        draggable: false,
+        draggable: true,
         initialSlide: 0,
         arrows: true,
 
@@ -58,7 +59,9 @@ export function Releases() {
 
     const [productLiked, setProductLiked] = useState(false);
     const [releases, setReleases] = useState(productReleases);
+    const [productToAddToCart, setProductToAddToCart] = useState({})
 
+    // Calculate the product percentage promotions
     useEffect(() => {
         const updatedReleasesPromotion = productReleases.map((release) => {
             if (release.productPromotion !== null) {
@@ -79,11 +82,13 @@ export function Releases() {
                 <Slider {...settings}>
                     {releases.map((release) => {
                         return (
-                            <ProductCard key={release.id} product={release} />
+                            <ProductCard key={release.id} product={release} productToAddToCart={productToAddToCart} setProductToAddToCart={setProductToAddToCart} />
                         )
                     })}
                 </Slider>
             </div>
+            {Object.keys(productToAddToCart).length > 0 && <AddToCartModal productToAddToCart={productToAddToCart} setProductToAddToCart={setProductToAddToCart} setShoppingCartAddedItems={setShoppingCartAddedItems} />}
+
         </div>
     )
 }

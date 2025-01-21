@@ -42,9 +42,19 @@ export const productReleases = [
           imageAlt: 'Scarpin Sligback',
           imageTitle: 'Scarpin Sligback',
           productName: 'Scarpin Sligback Bebecê Salto Médio Taça Detalhe Metalizado',
-          productPrice: '179,90',
+          productPrice: 179.90,
           productPromotion: null,
-          promotionPerCent: null
+          promotionPerCent: null,
+          numbers: [
+               { number: 35, qty: 3 },
+               { number: 36, qty: 0 },
+               { number: 37, qty: 3 },
+               { number: 38, qty: 7 },
+               { number: 39, qty: 20 },
+               { number: 40, qty: 0 },
+               { number: 41, qty: 0 },
+               { number: 42, qty: 0 },
+          ]
      },
      {
           id: 2,
@@ -54,7 +64,17 @@ export const productReleases = [
           productName: 'Sandália Braco Blanc Tratorada...',
           productPrice: 459.90,
           productPromotion: 319.89,
-          promotionPerCent: null
+          promotionPerCent: null,
+          numbers: [
+               { number: 35, qty: 3 },
+               { number: 36, qty: 0 },
+               { number: 37, qty: 10 },
+               { number: 38, qty: 0 },
+               { number: 39, qty: 20 },
+               { number: 40, qty: 1 },
+               { number: 41, qty: 2 },
+               { number: 42, qty: 3 },
+          ]
      },
      {
           id: 3,
@@ -64,7 +84,17 @@ export const productReleases = [
           productName: 'Coturno Feminino Bebecê Tratorado Detalhe Tachas',
           productPrice: 349.90,
           productPromotion: 315,
-          promotionPerCent: null
+          promotionPerCent: null,
+          numbers: [
+               { number: 35, qty: 3 },
+               { number: 36, qty: 0 },
+               { number: 37, qty: 0 },
+               { number: 38, qty: 1 },
+               { number: 39, qty: 0 },
+               { number: 40, qty: 0 },
+               { number: 41, qty: 0 },
+               { number: 42, qty: 0 },
+          ]
      },
      {
           id: 4,
@@ -74,7 +104,17 @@ export const productReleases = [
           productName: 'Scarpin Bebecê Salto Alto Taça Com Fivela',
           productPrice: 159.90,
           productPromotion: null,
-          promotionPerCent: null
+          promotionPerCent: null,
+          numbers: [
+               { number: 35, qty: 3 },
+               { number: 36, qty: 0 },
+               { number: 37, qty: 0 },
+               { number: 38, qty: 1 },
+               { number: 39, qty: 0 },
+               { number: 40, qty: 1 },
+               { number: 41, qty: 0 },
+               { number: 42, qty: 1 },
+          ]
      },
      {
           id: 5,
@@ -84,7 +124,17 @@ export const productReleases = [
           productName: 'Slingback Branco Tiras Bico Fino Couro',
           productPrice: 379.90,
           productPromotion: null,
-          promotionPerCent: null
+          promotionPerCent: null,
+          numbers: [
+               { number: 35, qty: 3 },
+               { number: 36, qty: 0 },
+               { number: 37, qty: 1 },
+               { number: 38, qty: 0 },
+               { number: 39, qty: 1 },
+               { number: 40, qty: 0 },
+               { number: 41, qty: 1 },
+               { number: 42, qty: 0 },
+          ]
      },
      {
           id: 1,
@@ -94,7 +144,17 @@ export const productReleases = [
           productName: 'Scarpin Sligback Bebecê Salto Médio Taça Detalhe Metalizado',
           productPrice: '179,90',
           productPromotion: null,
-          promotionPerCent: null
+          promotionPerCent: null,
+          numbers: [
+               { number: 35, qty: 3 },
+               { number: 36, qty: 0 },
+               { number: 37, qty: 3 },
+               { number: 38, qty: 7 },
+               { number: 39, qty: 20 },
+               { number: 40, qty: 0 },
+               { number: 41, qty: 0 },
+               { number: 42, qty: 0 },
+          ]
      },
      {
           id: 2,
@@ -104,7 +164,17 @@ export const productReleases = [
           productName: 'Sandália Braco Blanc Tratorada...',
           productPrice: 459.90,
           productPromotion: 319.89,
-          promotionPerCent: null
+          promotionPerCent: null,
+          numbers: [
+               { number: 35, qty: 3 },
+               { number: 36, qty: 0 },
+               { number: 37, qty: 10 },
+               { number: 38, qty: 0 },
+               { number: 39, qty: 20 },
+               { number: 40, qty: 1 },
+               { number: 41, qty: 2 },
+               { number: 42, qty: 3 },
+          ]
      },
      {
           id: 3,
@@ -114,7 +184,17 @@ export const productReleases = [
           productName: 'Coturno Feminino Bebecê Tratorado Detalhe Tachas',
           productPrice: 349.90,
           productPromotion: 315,
-          promotionPerCent: null
+          promotionPerCent: null,
+          numbers: [
+               { number: 35, qty: 3 },
+               { number: 36, qty: 0 },
+               { number: 37, qty: 0 },
+               { number: 38, qty: 1 },
+               { number: 39, qty: 0 },
+               { number: 40, qty: 0 },
+               { number: 41, qty: 0 },
+               { number: 42, qty: 0 },
+          ]
      },
      {
           id: 4,
@@ -124,7 +204,17 @@ export const productReleases = [
           productName: 'Scarpin Bebecê Salto Alto Taça Com Fivela',
           productPrice: 159.90,
           productPromotion: null,
-          promotionPerCent: null
+          promotionPerCent: null,
+          numbers: [
+               { number: 35, qty: 3 },
+               { number: 36, qty: 0 },
+               { number: 37, qty: 0 },
+               { number: 38, qty: 1 },
+               { number: 39, qty: 0 },
+               { number: 40, qty: 1 },
+               { number: 41, qty: 0 },
+               { number: 42, qty: 1 },
+          ]
      },
      {
           id: 5,
@@ -134,7 +224,17 @@ export const productReleases = [
           productName: 'Slingback Branco Tiras Bico Fino Couro',
           productPrice: 379.90,
           productPromotion: null,
-          promotionPerCent: null
+          promotionPerCent: null,
+          numbers: [
+               { number: 35, qty: 3 },
+               { number: 36, qty: 0 },
+               { number: 37, qty: 1 },
+               { number: 38, qty: 0 },
+               { number: 39, qty: 1 },
+               { number: 40, qty: 0 },
+               { number: 41, qty: 1 },
+               { number: 42, qty: 0 },
+          ]
      },
 ]
 

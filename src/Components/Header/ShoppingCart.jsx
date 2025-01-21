@@ -1,12 +1,44 @@
+import { useEffect, useState } from 'react';
 import './ShoppingCart.scss';
 import { ShoppingCartItem } from './ShoppingCartItem';
 
-export function ShoppingCart({ handleCloseShoppingCart, shoppingCartOpened, setShoppingCartOpened, shoppingCartAddedItems }) {
+export function ShoppingCart({ handleCloseShoppingCart, shoppingCartOpened, setShoppingCartOpened, shoppingCartAddedItems, setShoppingCartAddedItems }) {
+
+    const [subTotal, setSubTotal] = useState('R$ 00,00');
+    const [discount, setDiscount] = useState('R$ 00,00');
+    const [total, setTotal] = useState('R$ 00,00');
+    const [shouldRecalculate, setShouldRecalculate] = useState(false);
+
+    const calculateSubTotal = (items) =>
+        items.reduce((acc, item) => acc + ((item.productPrice || 0) * (item.qty || 0)), 0);
+
+    const calculateTotalWithDiscount = (items) =>
+        items.reduce((acc, item) => acc + ((item.productPromotion || item.productPrice || 0) * (item.qty || 0)), 0);
+
+    const calculateDiscount = (items) =>
+        items.reduce((acc, item) => acc + ((item.productPromotion ? (item.productPrice || 0) - (item.productPromotion || 0) : 0) * (item.qty || 0)), 0);
+
+    useEffect(() => {
+        const subTotalValue = calculateSubTotal(shoppingCartAddedItems);
+        const totalValue = calculateTotalWithDiscount(shoppingCartAddedItems);
+        const discountValue = calculateDiscount(shoppingCartAddedItems);
+
+        setSubTotal(subTotalValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+        setTotal(totalValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }))
+        setDiscount(discountValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }))
+
+        setShouldRecalculate(false);
+    }, [shoppingCartAddedItems, shouldRecalculate])
 
     function handleShoppingCartClick(event) {
         if (event.target.classList.contains('shoppingCart')) {
             setShoppingCartOpened(false)
         }
+    }
+
+    function handleRemoveItemFromCart(id) {
+        const newShoppingCartList = shoppingCartAddedItems.filter((item) => item.id !== id)
+        setShoppingCartAddedItems(newShoppingCartList);
     }
 
     return (
@@ -21,24 +53,26 @@ export function ShoppingCart({ handleCloseShoppingCart, shoppingCartOpened, setS
                     </button>
                 </header>
                 <ul className="itemsList">
-                    <ShoppingCartItem />
-                    <ShoppingCartItem />
-                    {/* itemCart */}
+                    {shoppingCartAddedItems.map((productItem) => {
+                        return (
+                            <ShoppingCartItem key={productItem.id} product={productItem} setShouldRecalculate={setShouldRecalculate} handleRemoveItemFromCart={handleRemoveItemFromCart} />
+                        )
+                    })}
                 </ul>
                 <footer>
                     <ul>
                         <li>
                             <p>Subtotal</p>
-                            <span>R$ 1055,89</span>
+                            <span>{subTotal}</span>
                         </li>
                         <li>
                             <p>Descontos</p>
-                            <span className='discount'>- R$ 191,62</span>
+                            <span className='discount'>- {discount}</span>
                         </li>
                         <li>
                             <p>Total</p>
                             <span>
-                                R$ 864,27
+                                {total}
                             </span>
                         </li>
                     </ul>

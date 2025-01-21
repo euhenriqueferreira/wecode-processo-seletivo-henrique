@@ -9,13 +9,13 @@ export function Banners({ isMobile }) {
             {isMobile ?
                 bannersMobile.map((bannerMobile) => {
                     return (
-                        <img src={bannerMobile.imageUrl} alt={bannerMobile.imageAlt} title={bannerMobile.imageTitle} loading='lazy' />
+                        <img key={bannerMobile.imageUrl} src={bannerMobile.imageUrl} alt={bannerMobile.imageAlt} title={bannerMobile.imageTitle} loading='lazy' />
                     )
                 })
                 :
                 bannersDesktop.map((banner) => {
                     return (
-                        <img src={banner.imageUrl} alt={banner.imageAlt} title={banner.imageTitle} loading='lazy' />
+                        <img key={banner.imageUrl} src={banner.imageUrl} alt={banner.imageAlt} title={banner.imageTitle} loading='lazy' />
                     )
                 })
             }
