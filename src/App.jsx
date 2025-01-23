@@ -14,11 +14,11 @@ import { Newsletter } from './Components/Newsletter/Newsletter';
 import { Releases } from './Components/Releases/Releases';
 
 export function App() {
-  const storedProductsInCart = JSON.parse(sessionStorage.getItem('productsInShoppingCart')) || null;
-
+  const storedProductsInCart = JSON.parse(sessionStorage.getItem('productsInShoppingCart')) || [];
   const [isMobile, setIsMobile] = useState(window.innerWidth < 575)
   const [hasWindowScrolled, setHasWindowScrolled] = useState(false);
-  const [productsInCart, setProductsInCart] = useState(storedProductsInCart || null)
+  const [productsInCart, setProductsInCart] = useState(storedProductsInCart || [])
+
 
   useEffect(() => {
     sessionStorage.setItem('productsInShoppingCart', JSON.stringify(productsInCart));
